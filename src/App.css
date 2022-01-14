@@ -1,0 +1,688 @@
+@font-face {
+	font-family: 'Cedarville Cursive', cursive;
+  font-family: 'Sora', sans-serif;
+	src: url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Sora:wght@800&display=swap');
+
+}
+
+.background {
+
+  background-image: url('./images/main1.png');
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: unset;
+  background-position: inherit;
+  justify-content: center;
+ }
+.pictures {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+ .firstpic{
+  display: flex;
+    width: 647px;
+    text-align: center;
+    margin-top: -284px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    position: relative;
+    height: 401px;
+    /* background-image: url('./images/main.png'); */
+    transform: scale(.5);
+ }
+
+ .title1{
+  display: flex;
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  background: -webkit-linear-gradient(left, #225021, #2167ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 22px;
+  font-weight: bolder;
+  justify-content: center;
+  position: relative;
+ }
+
+ .title2{
+  display: flex;
+  width: 100%;
+  text-align: center;
+  margin-top: 23px;
+  background: -webkit-linear-gradient(left, #225021, #2167ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  justify-content: center;
+  position: relative;
+ }
+
+ 
+ .button-fam {
+  justify-content: center; 
+  display: flex;
+  position: relative;
+  top: -73px;
+ }
+
+ .thumb {
+  
+  font-family: revert;
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    position: relative;
+    top: -93px;
+    justify-content: center;
+    opacity: .8;
+ }
+
+
+ .uploadButton {
+   display: flex;
+   padding: 20px;
+   margin-right: 22px;
+   border:0px;
+   border-radius: 5px;
+   font-family: 'Encode Sans', sans-serif;
+   font-size: 15px;
+   color:rgb(10, 110, 1);
+   transition: 200ms;
+   animation: none;
+   background-color: #f9fafb;
+   position: relative;
+   outline: auto;
+ }
+
+ @keyframes example1 {
+  0%   {background-color: rgb(255, 255, 255);}
+  50%  {background-color: rgb(148, 206, 148);}
+  100% {background-color: #f9fafb;}
+}
+
+ .uploadButton:hover {
+   background:rgb(165, 255, 180)
+ }
+
+
+ .cpbutton {
+  display: flex;
+  width: 33px;
+  border-radius: 4px;
+  border-color: #b7b7b7;
+  position: relative;
+ }
+
+ .cCloseButton{
+  border: none;
+    border-radius: 18px;
+    font-family: monospace;
+    font-weight: 500;
+    box-shadow: rgb(206, 23, 23);
+    width: 109px;
+    box-shadow: 1px 1px 8px #888888;
+    font-family: inherit;
+    font-size: 13px;
+    justify-content: center;
+    margin: 0 auto;
+    color: #8f8f8f;
+    background-color: aliceblue;
+    height: 31px;
+    /* outline: chartreuse; */
+    outline-style: solid;
+    /* outline-color: coral; */
+    outline-width: 2px;
+}
+ 
+ 
+ .colorpalette {
+  position: relative;
+    justify-content: center;
+    display: grid;
+    top: -69px;
+    z-index: 9;
+    opacity: .5;
+    margin: 0 auto;
+    margin-left: 108px;
+    pointer-events: none;
+ }
+
+
+ .downloadButton {
+  display: flex;
+  padding: 20px;
+  border:0px;
+  border-radius: 5px;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 15px;
+  color:rgb(11, 63, 105);
+  background-color: #f9fafb;
+  outline: auto;
+}
+
+.downloadButton:hover{
+  background:rgb(203, 224, 255)
+}
+
+.progressBg {
+	background-color: #e0e0e0;
+  background-color: #e0e0e0;
+  position: relative;
+  display: flex;
+  top: -130px;
+  margin: 0 auto;
+  width: 181px;
+}
+
+.progress {
+	width: 198px;
+	height: 4px;
+	background: rgba(255, 98, 98, 0.911);
+  animation: example 200ms infinite;
+  margin-top: none;
+}
+
+@keyframes example {
+  0%   {background-color:rgb(255, 166, 166); left:0px; top:0px;}
+  25%  {background-color:rgb(255, 159, 81); left:200px; top:0px;}
+  50%  {background-color:rgb(255, 252, 91); left:200px; top:0px;}
+  100% {background-color:rgb(68, 155, 114); left:0px; top:0px;}
+}
+
+.progress-done {
+	width: 0px;
+	height: 4px;
+	background: rgba(255, 255, 255, 0.2);
+
+  
+}
+
+.statususer {
+  font-family: revert;
+  font-size: 17px;
+  font-weight: 500;
+  font-style: italic;
+  display: flex;
+  position: relative;
+  top: -140px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.feedback {
+	position: relative;
+  margin-top: -90px;
+  display: grid;
+  justify-content: center;
+}
+
+.substext{
+  font-size: 13px;
+  color: #010204;
+  width: 322px;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+}
+.substext::before{
+  color: rgb(0, 100, 194);
+  content: "sign up";
+  font-size: 18px;
+  
+}
+
+
+.emailtext{
+	/* margin-top: 2px; */
+    margin-left: 0px;
+
+}
+.emailContent {
+	
+  font-family: inherit;
+  font-size: small;
+  width: 320px;
+  margin-left: 0px;
+  height: 19px;
+  /* border-radius: 9px; */
+  border: none;
+  margin-bottom: 5px;
+  outline-style: auto;
+  outline-color: #c5c5c5;
+  text-align: center;
+
+}
+
+
+.messageContent {
+	font-family: 'Quicksand', sans-serif;
+  font-size: small;
+  width: 314px;
+  height: 80px;
+  border: none;
+  margin-bottom: 4px;
+  font-family: inherit;
+  padding: 5px 5px 5px 5px;
+  outline-style: auto;
+  outline-color: #c5c5c5;
+  
+}
+
+.sendButton {
+	margin-top: 0px;
+  border-radius: 4px;
+  background-color: #65a7e5;
+  color: rgb(255, 255, 255);
+  font-family: inherit;
+  border: #555656;
+  font-weight: bolder;
+  height: 25px;
+  outline-style: auto;
+  outline-color: #2b6a95;
+  animation: 'none'; 
+  transition: 400ms;
+
+}
+.sendButton:hover {
+  cursor: pointer;
+}
+
+
+.disclaimers{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.privacycss {
+  padding: 0px 15px 15px 0px;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 12px;
+  color: #0f74af;
+}
+
+.termscss {
+  padding: 0px 15px 15px 0px;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 12px;
+  color: #0f74af;
+}
+
+.aboutcss {
+  padding: 0px 15px 15px 0px;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 12px;
+  color: #0f74af;
+}
+
+
+.writeemail{
+  font-family: 'Encode Sans';
+    font-size: smaller;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+    color: #66696c;
+}
+/* @media screen and (max-width: 903px) and (orientation : portrait) {
+.background {
+  transform: scale(.5);
+}
+.
+} */
+
+/* Media Queries */
+
+  /* iphone X */
+  /* @media screen and (min-width: 375px) and (orientation : portrait) {
+    .title1{transform: scale(.6);margin-top: 40px;}
+    .title2{transform: scale(.6);margin-top: -20px;}
+    .thumb {transform: scale(.8);top: 310px;left: -70px;}
+    .button-fam {transform: scale(.8);top: 350px;}
+    .colorpalette {transform: scale(.8);margin-top: -15px;left: 70px;}
+    .statususer {transform: scale(.8);margin-top: -3px;left: -70px;}
+    .progressBg {transform: scale(.8);margin-top: -5px;}
+    .feedback {transform: scale(.8);margin-top: -120px;left: 5px;}
+  } */
+
+  /* iphone 11 */
+  /* @media screen and (min-width: 828px) and (orientation : portrait) {
+    .title1{transform: scale(.9);margin-top: 220px;}
+    .title2{transform: scale(1);margin-top: 20px;}
+    .thumb {transform: scale(1.5);top: 420px;}
+    .button-fam {transform: scale(1.35);top: 500px;}
+    .colorpalette {transform: scale(1.1);margin-top: 195px;margin-left: 300px;}
+    .statususer {transform: scale(1.4);margin-top: 220px;}
+    .progressBg {transform: scale(1.3);margin-top: 210px;}
+    .feedback {transform: scale(1.6);margin-top: 500px;}
+  } */
+
+
+  /* iphone 12 */
+  /* @media screen and (width: 1170px) and (height: 2532px) and (orientation : portrait) {
+    .title1{transform: scale(1.7);margin-top: 180px;width: 500px;margin-left:310px}
+    .title2{transform: scale(1.7);margin-top: 110px;}
+    .thumb {transform: scale(2.2);top: 550px;margin-left: 370px;}
+    .button-fam {transform: scale(2.5);top: 690px;}
+    .colorpalette {transform: scale(2);margin-top: 540px;margin-left: 640px;}
+    .statususer {transform: scale(1.9);margin-top: 450px;margin-left: 410px;}
+    .progressBg {transform: scale(1.9);margin-top: 430px;}
+    .feedback {transform: scale(2.2);margin-top: 1100px;margin-left:40px;}
+  } */
+  
+  /* redmi 9a */
+  /* @media screen and (width: 720px) and (height: 1600px) and (orientation : portrait) {
+    .title1{transform: scale(.9);margin-top: 220px;}
+    .title2{transform: scale(1);margin-top: 20px;}
+    .thumb {transform: scale(1.5);top: 420px;}
+    .button-fam {transform: scale(1.35);top: 500px;}
+    .colorpalette {transform: scale(1.1);margin-top: 195px;margin-left: 300px;}
+    .statususer {transform: scale(1.4);margin-top: 220px;}
+    .progressBg {transform: scale(1.3);margin-top: 210px;}
+    .feedback {transform: scale(1.6);margin-top: 500px;}
+  } */
+
+/* iphone 5/SE/X 320*568 */
+@media screen and (min-width: 320px) and (orientation : portrait) {
+.title1{display:flex;
+  width: 60%;
+  text-align: center;
+  margin-top: 40px;
+  background: -webkit-linear-gradient(left, #225021, #2167ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 19px;
+  opacity: 0.95;
+  font-weight: bolder;
+  justify-content: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title2{
+  display: flex;
+  width: 100%;
+  text-align: center;
+  margin-top: 23px;
+  background: -webkit-linear-gradient(left, #225021, #2167ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Encode Sans', sans-serif;
+  font-size: 13px;
+  font-weight: bolder;
+  justify-content: center;
+  position: relative;
+  }
+.thumb {
+  font-family: revert;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: italic;
+  display: flex;
+  position: relative;
+  top: 24px;
+  justify-content: center;
+ }
+ .button-fam {
+  justify-content: center; 
+  display: flex;
+  position: relative;
+  top: 30px;
+  transform: scale(.6);
+ }
+ .colorpalette {
+  position: relative;
+  justify-content: center;
+  display: grid;
+  top: -38px;
+  z-index: 9;
+  opacity: .5;
+  margin: 0 auto;
+  margin-left: 60px;
+  pointer-events: none;
+  transform: scale(.6);
+ }
+ .statususer {
+  font-family: revert;
+  font-size: 17px;
+  font-weight: 500;
+  font-style: italic;
+  display: flex;
+  position: relative;
+  top: -240px;
+  justify-content: center;
+  margin: 0 auto;
+  transform: scale(.7);
+}
+.progressBg {
+	background-color: #feffff;
+  background-color: #feffff;
+  position: relative;
+  display: flex;
+  top: -230px;
+  margin: 0 auto;
+  width: 181px;
+  transform: scale(.8)
+}
+.feedback {
+	position: relative;
+  margin-top: -190px;
+  display: grid;
+  justify-content: center;
+  transform: scale(.65)
+}
+
+  }
+
+
+
+/* iphone 11 828*1792 */
+@media screen and (min-width: 828px) and (orientation : portrait) {
+  .title1{display:flex;
+    width: 80%;
+    text-align: center;
+    margin-top: 150px;
+    background: -webkit-linear-gradient(left, #225021, #2167ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 60px;
+    opacity: 0.95;
+    font-weight: bolder;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .title2{
+    display: flex;
+    width: 70%;
+    text-align: center;
+    margin-top: 45px;
+    background: -webkit-linear-gradient(left, #225021, #2167ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    }
+  .thumb {
+    font-family: revert;
+    font-size: 13px;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    position: relative;
+    top: 50px;
+    justify-content: center;
+    transform: scale(2.2)
+   }
+   .button-fam {
+    justify-content: center; 
+    display: flex;
+    position: relative;
+    top: 100px;
+    transform: scale(1.65);
+   }
+   .colorpalette {
+    position: relative;
+    justify-content: center;
+    display: grid;
+    top: 160px;
+    z-index: 9;
+    opacity: .5;
+    margin: 0 auto;
+    margin-left: 140px;
+    pointer-events: none;
+    transform: scale(1.3);
+   }
+   .statususer {
+    font-family: revert;
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    position: relative;
+    top: -80px;
+    justify-content: center;
+    margin: 0 auto;
+    transform: scale(1.5);
+  }
+  .progressBg {
+    background-color: #feffff;
+    background-color: #feffff;
+    position: relative;
+    display: flex;
+    top: -80px;
+    margin: 0 auto;
+    width: 181px;
+    transform: scale(1.5)
+  }
+  .feedback {
+    position: relative;
+    margin-top: 300px;
+    display: grid;
+    justify-content: center;
+    transform: scale(1.6)
+  }
+  
+    }
+
+
+/* iphone 12 1170*2532 */
+@media screen and (min-width: 1170px) and (orientation : portrait) {
+  .title1{display:flex;
+    width: 80%;
+    text-align: center;
+    margin-top: 220px;
+    background: -webkit-linear-gradient(left, #225021, #2167ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 75px;
+    opacity: 0.95;
+    font-weight: bolder;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .title2{
+    display: flex;
+    width: 70%;
+    text-align: center;
+    margin-top: 65px;
+    background: -webkit-linear-gradient(left, #225021, #2167ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    }
+  .thumb {
+    font-family: revert;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    position: relative;
+    top: 70px;
+    justify-content: center;
+    transform: scale(2.2)
+   }
+   .button-fam {
+    justify-content: center; 
+    display: flex;
+    position: relative;
+    top: 170px;
+    transform: scale(2.2);
+   }
+   .colorpalette {
+    position: relative;
+    justify-content: center;
+    display: grid;
+    top: 305px;
+    z-index: 9;
+    opacity: .5;
+    margin: 0 auto;
+    margin-left: 180px;
+    pointer-events: none;
+    transform: scale(1.7);
+   }
+   .statususer {
+    font-family: revert;
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    position: relative;
+    top: 30px;
+    justify-content: center;
+    margin: 0 auto;
+    transform: scale(2.2);
+  }
+  .progressBg {
+    background-color: #feffff;
+    background-color: #feffff;
+    position: relative;
+    display: flex;
+    top: 25px;
+    margin: 0 auto;
+    width: 181px;
+    transform: scale(2.2)
+  }
+  .feedback {
+    position: relative;
+    margin-top: 302px;
+    display: grid;
+    justify-content: center;
+    transform: scale(2.5)
+  }
+  
+    }

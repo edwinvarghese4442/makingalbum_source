@@ -1,0 +1,374 @@
+import './App.css';
+import React,  {Component} from 'react';
+import axios from 'axios';
+import { ChromePicker } from 'react-color';
+
+import { NavLink } from 'react-router-dom';
+
+class App extends Component {
+
+
+  constructor() {
+    super()
+
+    this.downloadFile = this.downloadFile.bind(this)
+    this.state.display = 0.0
+    this.state.pbar = 0
+    this.state.bgc = '#ff2525'
+    this.state.pgbg = '#ff2525'
+    this.state.statususer = 'waiting for users input'
+    this.state.animation = 'example 200ms infinite'
+    this.state.background = '#FFEDCC'
+    
+    this.state.mtprogress = 'none'
+    this.state.animationupload = 'none'
+    this.state.nofiles = ''
+    this.state.feedbacktop = '158px'
+
+    this.state.displayPalette = 0.0
+    this.state.pointerevents = 'none'
+    this.state.sendanimate = 'none'
+    this.state.signuptext = 'sign up'
+    this.state.emailvalue = ''
+    this.emailhandleChange = this.emailhandleChange.bind(this);
+  }
+
+  state = {
+    selectedFile: null,
+
+   }
+
+  fileSelectedHandler = (event) => {
+
+    // assign uploaded file to 'selectedFile' variable (state is being changed now)
+    this.setState({
+      selectedFile: event.target.files
+    })
+    console.log("uploaded file")
+    console.log(event.target.files)
+    
+    
+
+    // zip the entire user uploaded files and covert it into a blob and keep it ready
+    const zip = require('jszip')();
+    let files = event.target.files;
+    for (let file = 0; file < event.target.files.length; file++) {
+                  // Zip file with the file name.
+                  zip.file(files[file].name, files[file]);
+                } 
+    zip.generateAsync({type: "blob"}).then(content => {
+      // console.log(content, 'oooo');
+      this.setState({
+        selectedFile: content
+      })
+
+      console.log(this.state.selectedFile, 'bbbbbbbb')
+      // saveAs(content, "example.zip");
+      });
+
+      if (event.target.files.length>1){
+      
+        this.setState({
+        nofiles: event.target.files.length + ' images selected'
+      })
+        
+    }
+      else {
+        this.setState({
+          nofiles: event.target.files.length + ' image selected'
+        })
+        }
+      }
+    
+
+  downloadFile (data) {
+      console.log(data,"arguments")
+      const payload = {
+        "process_type": "url",
+        "input_extension":data[0],
+        "output_extension": data[1],
+        "size1":this.state.rangeval1,
+        "size2":this.state.rangeval2,
+        "page_input": this.state.pageNumber
+        };
+      
+      console.log(this.state.selectedFile, "file")
+      // if 
+      if (this.state.selectedFile != null) {
+
+                  // initiate dummy portion of the loader
+
+                  this.setState({'animation': 'example 200ms infinite'})
+                  this.setState({'pgbg': '#ff2525'})
+                  this.setState({display: 1})
+                  this.setState({pbar: 30})
+                  this.setState({statususer:'starting...'})
+
+
+                  // get external url path of the final file
+                  axios.post('http://3.110.155.162/album', payload)
+                    .then(response => 
+                  { 
+                    // display the urls along the file path
+                    console.log("display the urls along the file path") 
+                    console.log(response.data)
+  
+  
+                    //upload blob file to s3
+                    console.log("uploading file to s3",  this.state.selectedFile, typeof(this.state.selectedFile)) 
+                    axios.put(response.data.file_upload[0], this.state.selectedFile)
+  
+                    const blob = new Blob([JSON.stringify({'status':'wip', 'reponse':'20'})], { type: 'application/json' });
+                    var blob_file = new File([blob], "k.json")
+  
+                    // pass back a json file with details like wip and percentage
+                    axios.put(response.data.json_put[0], blob_file).then(res => 
+                      {
+                        //call axios async
+                        var payload = {
+                          "process_type": "pdftoimage",
+                          "user_file": response.data.file_upload[1],
+                          "outfile_name": response.data.file_download[1],
+                          "json_file": response.data.json[1],
+                          "color":data[2]
+                          };
+                        axios.post('http://3.110.155.162/album', payload)
+                        
+              
+                        // Going to a recursive function
+                        var self = this
+                        var i = 0
+
+
+                        function get() 
+                        
+                        {
+                          
+                              
+                              axios.get(response.data.json[0]).then(res => 
+                                {
+
+                                  var json_value = res.data
+                                  if (json_value['status'] === 'wip') 
+                                  
+                                  {
+                                    self.setState({pbar: 150})
+                                    console.log('still processing',i)
+                                    self.setState({statususer:'uploading and stitching all your memories together :) please give me some time'})
+                                    
+                                    setTimeout(
+                                      function() {
+                                          get()
+                                      }
+                                      .bind(this),
+                                      1000
+                                      ); // call recursive function like this inorder to avoid a screen freeze (for eg. you will not be able to do even a right click)
+
+                                  } 
+                                  
+                                  else 
+                                  
+                                  {
+                                    console.log('file is ready')
+                                    axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
+                                    self.setState({pbar: 220, 'bgc': '#178012'}, () => {
+                                      self.setState({'animation': 'none'})
+                                      self.setState({'pgbg': '#178012'})})
+                                    self.setState({statususer:' yay! your album is downloaded and ready for printing!'})
+                                    var blob_file = new File([new Blob([res.data])], "a1.zip")
+                                    const url = window.URL.createObjectURL(blob_file);
+                                    const link = document.createElement('a');
+                                    link.href = url;
+                                    link.setAttribute('download', 'Ready to print Digital Album.pdf');
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    link.remove();})
+                                    
+                                  }
+                                  
+
+                                });
+                              
+                                              
+                        }
+  
+                        // this.get.bind(this)
+                        
+                        console.log("get json now")
+  
+                        get();
+                        
+                      });
+                      
+                  });
+      
+  
+                } else{
+
+                  // console.log(this.state.animationupload, 'before')
+                  // console.log('first you select photos...')
+                  // this.setState({'animationupload': 'example1 3000ms'},()=>{this.setState({'animationupload': 'none'})})
+                  // console.log(this.state.animationupload, 'ipolo')
+
+                  this.setState({animationupload:'example1 1000ms'}, () => {
+                    setTimeout(() => { this.setState({animationupload:'none'})}, 1000)});
+
+                } 
+           }
+           handleChangeComplete = (color) => {
+            this.setState({ background: color.hex });
+            console.log(this.state.background)
+          };
+
+          emailhandleChange(event) {    
+            
+            this.setState({emailvalue: event.target.value});  }
+
+          openColorPalette = () =>{
+            console.log('open')
+            if (this.state.displayPalette === 0.0) {
+              this.setState({displayPalette:.95}, () => {
+              this.setState({pointerevents:'painted'})});
+              
+              // this.setState({mtprogress:'-238px'})
+              // this.setState({feedbacktop:'-43px'})
+            }
+ 
+            else {
+              console.log('closed')
+              this.setState({displayPalette:0.0})}
+              this.setState({pointerevents:'none'});
+              // this.setState({mtprogress:'180px'})}
+              // this.setState({feedbacktop:'158px'})
+              
+            }
+          
+          signupButton = () => {
+            // this.setState({sendanimate:'rgb(148, 206, 148)'})
+            // this.setState({signuptext:'Done. Stay tuned!'})
+            if (!this.state.emailvalue.includes('@')) {
+              this.setState({sendanimate:'#ff8c8c'})
+            this.setState({signuptext:'oops. email is invalid'}, () => {
+              setTimeout(() => { 
+                this.setState({signuptext:'sign up'})
+                this.setState({sendanimate:'#65a7e5'})}, 500)})
+            
+            
+
+            }
+            else{
+            this.setState({sendanimate:'rgb(148, 206, 148)'})
+            this.setState({emailvalue: ''})
+            this.setState({signuptext:'Welcome and Stay tuned!'}, () => {
+              setTimeout(() => { 
+                this.setState({signuptext:'sign up'})
+                this.setState({sendanimate:'#65a7e5'})}, 3000)});
+            console.log('sending mail now')
+            const payload = {"email":this.state.emailvalue}
+            axios.post('http://3.110.155.162/mail', payload)
+            console.log('sent')
+              
+              }
+                
+          }
+          
+          
+
+
+  render(){
+  return (
+    
+    <div className="background">
+      {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script> */}
+
+      <div className = "title1"><h1>FREE 'ready to print' digital photo album</h1></div>
+      <div className = "title2"><h2>..because it's always better to keep a printed copy of your photos</h2></div>
+
+      <div className = "firstpic"></div>
+
+
+      
+      
+      <div className='thumb'>
+          {this.state.nofiles}
+        </div>
+
+
+      <div className = 'button-fam'>
+        <div>
+          <input style={{display:'none'}}
+          type = "file"
+          onChange={this.fileSelectedHandler} multiple
+          ref={fileInput => this.fileInput = fileInput}/>
+          <button className = 'uploadButton' onClick={() => this.fileInput.click()} style = {{animation:this.state.animationupload}}>select photos</button>
+          
+        </div>
+
+        <button className='cpbutton' onClick={() =>this.openColorPalette()} style = {{backgroundColor:this.state.background}}>
+            <p></p>
+        </button>
+      
+        <div>
+          <button className = 'downloadButton' onClick={() =>this.downloadFile(['.zip','.pdf', this.state.background])}>make album</button>
+        </div>
+      </div>
+
+
+
+      <div  className='colorpalette' style = {{opacity:this.state.displayPalette, pointerEvents:this.state.pointerevents}}>
+        <button className='cCloseButton' onClick={() =>this.openColorPalette()}>
+          close
+        </button>
+        <div>
+          <ChromePicker 
+            color={this.state.background }
+            onChangeComplete={ this.handleChangeComplete }
+          />
+        </div>
+      </div>
+      
+
+
+      <div className = 'progressBg' style = {{opacity: this.state.display}}>
+        <div className = "progress" style = {{opacity:this.state.display, width:this.state.pbar, background:this.state.pgbg, animation:this.state.animation}}>
+          {/* <div className = "progress-done" style={{background:this.state.bgc}}> </div> */}
+        </div>
+      </div>
+
+
+      <div className='statususer' style = {{opacity: this.state.display}}>
+        <p> {this.state.statususer} </p>
+      </div>
+
+
+      <div className = 'feedback'>
+        
+        <p className='substext'> for exclusive updates, promotions and product launch information that are coming soon! </p>
+        <div class = 'email'>
+          <p class = 'emailtext'></p>
+          <input class = 'emailContent' placeholder = 'your email id' type = 'text' value = {this.state.emailvalue} onChange={this.emailhandleChange}></input>
+        </div>
+
+        {/* <textarea placeholder = "your feedback is important to me!" class = 'messageContent'  > </textarea> */}
+        
+        <button class = 'sendButton' onClick={() =>this.signupButton()} style = {{backgroundColor: this.state.sendanimate}}>{this.state.signuptext}</button>
+        
+      </div>
+
+      <p className='writeemail'>reach us at hello@makingalbum.com</p>
+
+
+      <div className='disclaimers'>
+        <NavLink to="/About" className= 'aboutcss'>About us</NavLink>
+        <NavLink to="/Privacy" className= 'privacycss'>Privacy policy</NavLink>
+        <NavLink to="/Terms" className= 'termscss'>Terms of use</NavLink>
+      </div>
+
+      
+
+    </div>
+  );
+}
+}
+
+export default App;
