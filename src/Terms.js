@@ -6,7 +6,7 @@ function Terms() {
     return (
         <div>
             <p>
-               Ninde achande...
+                Coming soon
             </p>
         </div>
     )

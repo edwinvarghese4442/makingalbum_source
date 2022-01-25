@@ -431,12 +431,12 @@
   }
 .thumb {
   font-family: revert;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 500;
   font-style: italic;
   display: flex;
   position: relative;
-  top: 24px;
+  top: -44px;
   justify-content: center;
  }
  .button-fam {
@@ -444,13 +444,14 @@
   display: flex;
   position: relative;
   top: 30px;
-  transform: scale(.6);
+  transform: scale(1);
+  margin-top: -43px;
  }
  .colorpalette {
   position: relative;
   justify-content: center;
   display: grid;
-  top: -38px;
+  top: -24px;
   z-index: 9;
   opacity: .5;
   margin: 0 auto;
@@ -460,12 +461,12 @@
  }
  .statususer {
   font-family: revert;
-  font-size: 17px;
+  font-size: 23px;
   font-weight: 500;
   font-style: italic;
   display: flex;
   position: relative;
-  top: -240px;
+  top: -200px;
   justify-content: center;
   margin: 0 auto;
   transform: scale(.7);
@@ -475,17 +476,17 @@
   background-color: #feffff;
   position: relative;
   display: flex;
-  top: -230px;
+  top: -190px;
   margin: 0 auto;
   width: 181px;
   transform: scale(.8)
 }
 .feedback {
 	position: relative;
-  margin-top: -190px;
+  margin-top: -120px;
   display: grid;
   justify-content: center;
-  transform: scale(.65)
+  transform: scale(1.1)
 }
 
   }
@@ -502,7 +503,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Encode Sans', sans-serif;
-    font-size: 60px;
+    font-size: 24px;
     opacity: 0.95;
     font-weight: bolder;
     justify-content: center;
@@ -520,7 +521,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Encode Sans', sans-serif;
-    font-size: 40px;
+    font-size: 18px;
     font-weight: bolder;
     justify-content: center;
     position: relative;
@@ -534,7 +535,7 @@
     font-style: italic;
     display: flex;
     position: relative;
-    top: 50px;
+    top: -24px;
     justify-content: center;
     transform: scale(2.2)
    }
@@ -584,11 +585,20 @@
     margin-top: 300px;
     display: grid;
     justify-content: center;
-    transform: scale(1.6)
+    transform: scale(1.9)
   }
+
+  .disclaimers {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin-top: 28px;
+    transform: scale(1.8);
+    margin-top: 100px;
   
     }
-
+  }
 
 /* iphone 12 1170*2532 */
 @media screen and (min-width: 1170px) and (orientation : portrait) {
@@ -600,7 +610,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Encode Sans', sans-serif;
-    font-size: 75px;
+    font-size: 37px;
     opacity: 0.95;
     font-weight: bolder;
     justify-content: center;
@@ -618,7 +628,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Encode Sans', sans-serif;
-    font-size: 50px;
+    font-size: 27px;
     font-weight: bolder;
     justify-content: center;
     position: relative;
@@ -632,7 +642,7 @@
     font-style: italic;
     display: flex;
     position: relative;
-    top: 70px;
+    top: 15px;
     justify-content: center;
     transform: scale(2.2)
    }
@@ -662,7 +672,7 @@
     font-style: italic;
     display: flex;
     position: relative;
-    top: 30px;
+    top: 43px;
     justify-content: center;
     margin: 0 auto;
     transform: scale(2.2);
@@ -682,7 +692,17 @@
     margin-top: 302px;
     display: grid;
     justify-content: center;
-    transform: scale(2.5)
+    transform: scale(2.5);
+    margin-top: 500px;
   }
+  .disclaimers {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin-top: 28px;
+    transform: scale(2.2);
+    margin-top: 130px;
   
+    }
     }

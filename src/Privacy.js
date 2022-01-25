@@ -6,7 +6,7 @@ function Privacy() {
     return (
         <div>
             <p>
-               Ninde ammede naayaru...
+               Coming soon
             </p>
         </div>
     )

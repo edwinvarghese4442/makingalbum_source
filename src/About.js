@@ -6,7 +6,7 @@ function About() {
     return (
         <div>
             <p>
-               Njan thanne
+               Coming soon
             </p>
         </div>
     )
