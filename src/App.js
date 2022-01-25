@@ -106,7 +106,7 @@ class App extends Component {
 
 
                   // get external url path of the final file
-                  axios.post('https://3.110.155.162/album', payload)
+                  axios.post('https://main.makingalbum.com/album', payload)
                     .then(response => 
                   { 
                     // display the urls along the file path
@@ -132,7 +132,7 @@ class App extends Component {
                           "json_file": response.data.json[1],
                           "color":data[2]
                           };
-                        axios.post('https://3.110.155.162/album', payload)
+                        axios.post('https://main.makingalbum.com/album', payload)
                         
               
                         // Going to a recursive function
@@ -265,7 +265,7 @@ class App extends Component {
                 this.setState({sendanimate:'#65a7e5'})}, 3000)});
             console.log('sending mail now')
             const payload = {"email":this.state.emailvalue}
-            axios.post('https://3.110.155.162/mail', payload)
+            axios.post('https://main.makingalbum.com/mail', payload)
             console.log('sent')
               
               }
