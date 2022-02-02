@@ -8,10 +8,10 @@
 .background {
 
   /*background-image: url('./images/main1.png');*/
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-size: unset;
+  position: relative;
+  /* min-width: 100%;
+  min-height: 100%; */
+  background-size: cover;
   background-position: inherit;
   justify-content: center;
  }
