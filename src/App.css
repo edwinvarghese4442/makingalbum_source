@@ -48,7 +48,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Encode Sans', sans-serif;
-  font-size: 22px;
+  font-size: 14px;
   font-weight: bolder;
   justify-content: center;
   position: relative;
@@ -63,7 +63,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Encode Sans', sans-serif;
-  font-size: 15px;
+  font-size: 11px;
   font-weight: bolder;
   justify-content: center;
   position: relative;
@@ -178,11 +178,11 @@
 }
 
 .progressBg {
-	background-color: #e0e0e0;
-  background-color: #e0e0e0;
+	
+  background-color: #b6b3b3;
   position: relative;
   display: flex;
-  top: -130px;
+  top: -240px;
   margin: 0 auto;
   width: 181px;
 }
@@ -217,9 +217,10 @@
   font-style: italic;
   display: flex;
   position: relative;
-  top: -140px;
+  top: -300px;
   justify-content: center;
   margin: 0 auto;
+  text-align: center;
 }
 
 .feedback {
@@ -349,7 +350,7 @@
     justify-content: center;
     display: flex;
     color: #66696c;
-    margin-top: 120px;
+    margin-top: 280px;
 }
 /* 
 @media screen and (min-width: 320px) and (orientation : portrait) {
