@@ -7,14 +7,12 @@
 
 .background {
 
-  /* background-image: url('./images/main5.png'); */
+  background-image: url('./images/main5.png');
   position: relative;
   background-size: cover;
   justify-content: center;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  /* display: list-item; */
-  /* position: relative; */
+  width: 100vw;
+  overflow-x: hidden;
   
  }
 
