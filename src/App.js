@@ -281,8 +281,8 @@ class App extends Component {
     <div className="background">
       
 
-      <div className = "title1"><h1>FREE 'ready to print' digital photo album</h1></div>
-      <div className = "title2"><h2>..because it's always better to keep a printed copy of your photos</h2></div>
+      <div><h1 className = "title1">FREE 'ready to print' digital photo album</h1></div>
+      <div><h2 className = "title2">..because it's always better to keep a printed copy of your photos</h2></div>
       
      <div className = "firstpic"></div> 
 
