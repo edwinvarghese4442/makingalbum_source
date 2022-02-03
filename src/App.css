@@ -9,12 +9,15 @@
 
   background-image: url('./images/main5.png');
   position: relative;
-  /* min-width: 100%;
-  min-height: 100%; */
   background-size: cover;
-  background-position:inherit;
   justify-content: center;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* display: list-item; */
+  /* position: relative; */
+  
  }
+
 
 .pictures {
   position: relative;
@@ -42,7 +45,7 @@
   display: flex;
   width: 100%;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 149px;
   background: -webkit-linear-gradient(left, #225021, #2167ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -341,7 +344,7 @@
 }
 
 
-/* iphone 5/SE/X 320*568 */
+/* 
 @media screen and (min-width: 320px) and (orientation : portrait) {
 .title1{display:flex;
   width: 60%;
@@ -438,7 +441,7 @@
 
 
 
-/* iphone 11 828*1792 */
+
 @media screen and (min-width: 828px) and (orientation : portrait) {
   .title1{display:flex;
     width: 80%;
@@ -545,8 +548,18 @@
     }
   }
 
-/* iphone 12 1170*2532 */
+
 @media screen and (min-width: 1170px) and (orientation : portrait) {
+.background {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  position: relative;
+  
+ }
+
+
   .title1{display:flex;
     width: 80%;
     text-align: center;
@@ -650,4 +663,4 @@
     margin-top: 130px;
   
     }
-    }
+    } */

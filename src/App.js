@@ -279,12 +279,12 @@ class App extends Component {
   return (
     
     <div className="background">
-      {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script> */}
+      
 
       <div className = "title1"><h1>FREE 'ready to print' digital photo album</h1></div>
       <div className = "title2"><h2>..because it's always better to keep a printed copy of your photos</h2></div>
 
-      <div className = "firstpic"></div>
+     <div className = "firstpic"></div> 
 
 
       
