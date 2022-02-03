@@ -18,7 +18,7 @@ class App extends Component {
     this.state.pgbg = '#ff2525'
     this.state.statususer = 'waiting for users input'
     this.state.animation = 'example 200ms infinite'
-    this.state.background = '#FFEDCC'
+    this.state.background = '#FFFFFF'
     
     this.state.mtprogress = 'none'
     this.state.animationupload = 'none'
@@ -283,7 +283,7 @@ class App extends Component {
 
       <div className = "title1"><h1>FREE 'ready to print' digital photo album</h1></div>
       <div className = "title2"><h2>..because it's always better to keep a printed copy of your photos</h2></div>
-
+      
      <div className = "firstpic"></div> 
 
 
@@ -304,9 +304,7 @@ class App extends Component {
           
         </div>
 
-        <button className='cpbutton' onClick={() =>this.openColorPalette()} style = {{backgroundColor:this.state.background}}>
-            <p></p>
-        </button>
+        
       
         <div>
           <button className = 'downloadButton' onClick={() =>this.downloadFile(['.zip','.pdf', this.state.background])}>make album</button>
@@ -364,7 +362,7 @@ class App extends Component {
         <NavLink to="/Terms" className= 'termscss'>Terms of use</NavLink>
       </div>
 
-      
+      <p className= 'ty'>Thank you for using my site</p>
 
     </div>
   );
