@@ -46,7 +46,7 @@
   margin-top: 15px;
   /* background-image: linear-gradient(60deg, #2b4bff, #1b681f);
   background-clip: text;*/
-  color: rgba(255, 255, 255, 0); 
+  /* color: rgba(255, 255, 255, 0);  */
   background:-webkit-linear-gradient(45deg, #2b4bff, #1b681f);
   background-clip: text;
 
@@ -291,7 +291,7 @@
 }
 
 .sendButton {
-	margin-top: 0px;
+	margin-top: 4px;
   border-radius: 4px;
   background-color: #65a7e5;
   color: rgb(255, 255, 255);
