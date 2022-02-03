@@ -10,7 +10,7 @@
   background-image: url('./images/main5.png');
   position: relative;
   background-size: cover;
-  justify-content: center;
+  justify-content:stretch;
   width: 100vw;
   overflow-x: hidden;
   
@@ -44,9 +44,9 @@
   width: 100%;
   text-align: center;
   margin-top: 149px;
-  background: -webkit-linear-gradient(left, #225021, #2167ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(60deg, #2b4bff, #1b681f);
+  background-clip: text;
+  color: transparent;
   font-family: 'Encode Sans', sans-serif;
   font-size: 14px;
   font-weight: bolder;
@@ -59,9 +59,13 @@
   width: 100%;
   text-align: center;
   margin-top: 23px;
-  background: -webkit-linear-gradient(left, #225021, #2167ff);
+  /* background: -webkit-linear-gradient(left, #225021, #2167ff);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  background-image: linear-gradient(60deg, #2b4bff, #1b681f);
+  background-clip: text;
+  color: transparent;
+
   font-family: 'Encode Sans', sans-serif;
   font-size: 11px;
   font-weight: bolder;
@@ -87,7 +91,7 @@
     position: relative;
     top: -93px;
     justify-content: center;
-    opacity: .8;
+    opacity: .5;
  }
 
 
@@ -228,6 +232,7 @@
   margin-top: -206px;
   display: grid;
   justify-content: center;
+  transform: scale(1.1);
 }
 
 .substext{

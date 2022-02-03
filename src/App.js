@@ -22,7 +22,7 @@ class App extends Component {
     
     this.state.mtprogress = 'none'
     this.state.animationupload = 'none'
-    this.state.nofiles = ''
+    this.state.nofiles = 'no file selected'
     this.state.feedbacktop = '158px'
 
     this.state.displayPalette = 0.0
@@ -154,7 +154,7 @@ class App extends Component {
                                   {
                                     self.setState({pbar: 150})
                                     console.log('still processing',i)
-                                    self.setState({statususer:'uploading and stitching all your memories together :) please give me some time'})
+                                    self.setState({statususer:'uploading and stitching all your memories together :)'})
                                     
                                     setTimeout(
                                       function() {
@@ -174,7 +174,7 @@ class App extends Component {
                                     self.setState({pbar: 220, 'bgc': '#178012'}, () => {
                                       self.setState({'animation': 'none'})
                                       self.setState({'pgbg': '#178012'})})
-                                    self.setState({statususer:' yay! your album is downloaded and ready for printing!'})
+                                    self.setState({statususer:'downloaded and ready for printing! :)'})
                                     var blob_file = new File([new Blob([res.data])], "a1.zip")
                                     const url = window.URL.createObjectURL(blob_file);
                                     const link = document.createElement('a');
@@ -362,7 +362,7 @@ class App extends Component {
         <NavLink to="/Terms" className= 'termscss'>Terms of use</NavLink>
       </div>
 
-      <p className= 'ty'>Thank you for using my site</p>
+      <p className= 'ty'>happy album making!</p>
 
     </div>
   );
