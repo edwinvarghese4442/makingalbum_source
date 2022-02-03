@@ -45,11 +45,9 @@
   text-align: center;
   margin-top: 15px;
   
-  background-image:-webkit-linear-gradient(45deg, #2b4bff, #1b681f);
-  background-size: cover;
-    -webkit-background-clip: text;
+  color: rgba(255, 255, 255, 0); 
+  background:-webkit-linear-gradient(45deg, #2b4bff, #1b681f);
   background-clip: text;
-  -webkit-text-fill-color: #00000000;
   text-shadow: 0px 0px #00000000;
 
   font-family: 'Encode Sans', sans-serif;
@@ -64,13 +62,10 @@
   width: 100%;
   text-align: center;
   margin-top: 23px;
-
-
-  background-image:-webkit-linear-gradient(45deg, #2b4bff, #1b681f);
-  background-size: cover;
-    -webkit-background-clip: text;
+  
+  color: rgba(255, 255, 255, 0); 
+  background:-webkit-linear-gradient(45deg, #2b4bff, #1b681f);
   background-clip: text;
-  -webkit-text-fill-color: #00000000;
   text-shadow: 0px 0px #00000000;
 
   font-family: 'Encode Sans', sans-serif;
