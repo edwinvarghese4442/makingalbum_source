@@ -46,7 +46,7 @@
   margin-top: 149px;
   background-image: linear-gradient(60deg, #2b4bff, #1b681f);
   background-clip: text;
-  color: transparent;
+  color: rgba(255, 255, 255, 0);
   font-family: 'Encode Sans', sans-serif;
   font-size: 14px;
   font-weight: bolder;
@@ -64,7 +64,7 @@
   -webkit-text-fill-color: transparent; */
   background-image: linear-gradient(60deg, #2b4bff, #1b681f);
   background-clip: text;
-  color: transparent;
+  color: rgba(255, 255, 255, 0);
 
   font-family: 'Encode Sans', sans-serif;
   font-size: 11px;
