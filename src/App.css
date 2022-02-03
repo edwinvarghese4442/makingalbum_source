@@ -46,13 +46,10 @@
   text-align: center;
   margin-top: 15px;
   
-  background-color: #2b4bff;
-    background-image: linear-gradient(45deg, #2b4bff, #1b681f);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);  
-    -moz-text-fill-color: rgba(255, 255, 255, 0); 
+  
+  background-image: linear-gradient(45deg, #2b4bff, #1b681f);
+  background-clip: text;
+  color: rgba(255, 255, 255, 0);
   
 
   font-family: 'Encode Sans', sans-serif;
@@ -68,17 +65,9 @@
   text-align: center;
   margin-top: 82px;
   
-  /* color: rgba(255, 255, 255, 0); 
-  background:-webkit-linear-gradient(45deg, #2b4bff, #1b681f);
-  background-clip: text; */
-
-  background-color: #2b4bff;
-    background-image: linear-gradient(45deg, #2b4bff, #1b681f);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);  
-    -moz-text-fill-color: rgba(255, 255, 255, 0); 
+  background-image: linear-gradient(45deg, #2b4bff, #1b681f);
+  background-clip: text;
+  color: rgba(255, 255, 255, 0);
   
 
   font-family: 'Encode Sans', sans-serif;

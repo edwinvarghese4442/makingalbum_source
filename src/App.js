@@ -280,11 +280,10 @@ class App extends Component {
     
     <div className="background">
       
-
-      <div><h1 className = "title1">FREE 'ready to print' digital photo album</h1></div>
-      <div><h2 className = "title2">..because it's always better to keep a printed copy of your photos</h2></div>
+      <h1 className = "title1">FREE 'ready to print' digital photo album</h1>
+      <h2 className = "title2">..because it's always better to keep a printed copy of your photos</h2>
       
-     <div className = "firstpic"></div> 
+      <div className = "firstpic"></div> 
 
 
       
