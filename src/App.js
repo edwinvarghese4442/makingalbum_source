@@ -62,7 +62,7 @@ class App extends Component {
         selectedFile: content
       })
 
-      console.log(this.state.selectedFile, 'bbbbbbbb')
+
       // saveAs(content, "example.zip");
       });
 
@@ -82,7 +82,7 @@ class App extends Component {
     
 
   downloadFile (data) {
-      console.log(data,"arguments")
+      console.log(data,"arguments for getting URLs")
       const payload = {
         "process_type": "url",
         "input_extension":data[0],
@@ -118,7 +118,7 @@ class App extends Component {
                     console.log("uploading file to s3",  this.state.selectedFile, typeof(this.state.selectedFile)) 
                     axios.put(response.data.file_upload[0], this.state.selectedFile)
   
-                    const blob = new Blob([JSON.stringify({'status':'wip', 'reponse':'20'})], { type: 'application/json' });
+                    const blob = new Blob([JSON.stringify({'status':'wip', 'response':'uploading your photos','pbar':80})], { type: 'application/json' });
                     var blob_file = new File([blob], "k.json")
   
                     // pass back a json file with details like wip and percentage
@@ -152,9 +152,9 @@ class App extends Component {
                                   if (json_value['status'] === 'wip') 
                                   
                                   {
-                                    self.setState({pbar: 150})
+                                    self.setState({pbar: json_value['pbar'] })
                                     console.log('still processing',i)
-                                    self.setState({statususer:'uploading and stitching all your memories together :)'})
+                                    self.setState({statususer:json_value['response']})
                                     
                                     setTimeout(
                                       function() {
@@ -194,7 +194,7 @@ class App extends Component {
   
                         // this.get.bind(this)
                         
-                        console.log("get json now")
+                        
   
                         get();
                         
@@ -205,10 +205,7 @@ class App extends Component {
   
                 } else{
 
-                  // console.log(this.state.animationupload, 'before')
-                  // console.log('first you select photos...')
-                  // this.setState({'animationupload': 'example1 3000ms'},()=>{this.setState({'animationupload': 'none'})})
-                  // console.log(this.state.animationupload, 'ipolo')
+
 
                   this.setState({animationupload:'example1 1000ms'}, () => {
                     setTimeout(() => { this.setState({animationupload:'none'})}, 1000)});
@@ -224,24 +221,6 @@ class App extends Component {
             
             this.setState({emailvalue: event.target.value});  }
 
-          openColorPalette = () =>{
-            console.log('open')
-            if (this.state.displayPalette === 0.0) {
-              this.setState({displayPalette:.95}, () => {
-              this.setState({pointerevents:'painted'})});
-              
-              // this.setState({mtprogress:'-238px'})
-              // this.setState({feedbacktop:'-43px'})
-            }
- 
-            else {
-              console.log('closed')
-              this.setState({displayPalette:0.0})}
-              this.setState({pointerevents:'none'});
-              // this.setState({mtprogress:'180px'})}
-              // this.setState({feedbacktop:'158px'})
-              
-            }
           
           signupButton = () => {
             // this.setState({sendanimate:'rgb(148, 206, 148)'})

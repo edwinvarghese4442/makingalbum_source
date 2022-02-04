@@ -190,7 +190,7 @@
   background-color: #b6b3b3;
   position: relative;
   display: flex;
-  top: -240px;
+  top: -280px;
   margin: 0 auto;
   width: 181px;
 }
@@ -220,12 +220,12 @@
 
 .statususer {
   font-family: revert;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 500;
   font-style: italic;
   display: flex;
   position: relative;
-  top: -300px;
+  top: -345px;
   justify-content: center;
   margin: 0 auto;
   text-align: center;
@@ -233,7 +233,7 @@
 
 .feedback {
 	position: relative;
-  margin-top: -255px;
+  margin-top: -210px;
   display: grid;
   justify-content: center;
   transform: scale(1.1);
