@@ -171,18 +171,33 @@ class App extends Component {
                                   {
                                     console.log('file is ready')
                                     axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
-                                    self.setState({pbar: 220, 'bgc': '#178012'}, () => {
-                                      self.setState({'animation': 'none'})
-                                      self.setState({'pgbg': '#178012'})})
-                                    self.setState({statususer:'downloaded and ready for printing! :)'})
-                                    var blob_file = new File([new Blob([res.data])], "a1.zip")
-                                    const url = window.URL.createObjectURL(blob_file);
-                                    const link = document.createElement('a');
-                                    link.href = url;
-                                    link.setAttribute('download', 'Ready to print Digital Album.pdf');
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    link.remove();})
+                                    
+                                        // change the animated loading bar state and change the text as well
+                                        self.setState({pbar: 220, 'bgc': '#178012'}, () => {
+                                          self.setState({'animation': 'none'})
+                                          self.setState({'pgbg': '#178012'})})
+                                        self.setState({statususer:'downloaded and ready for printing! :)'})
+                                          
+                                        // auto download the pdf received as the response
+                                        if (getMobileOperatingSystem() != 'iOS') {
+                                              console.log("not ios")
+                                              var blob_file = new File([new Blob([res.data])], "sample")
+                                              const url = window.URL.createObjectURL(blob_file);
+                                              const link = document.createElement('a');
+                                              link.href = url;
+                                              link.setAttribute('download', 'Ready to print Digital Album.pdf');
+                                              document.body.appendChild(link);
+                                              link.click();
+                                              link.remove();}
+                                        else {
+                                              console.log("ios device")
+                                              var reader = new FileReader();
+                                              var out = new Blob([res.data], {type: 'application/pdf'});
+                                              reader.onload = function(e){
+                                              window.location.href = reader.result;}
+                                              reader.readAsDataURL(out);
+                                             }
+                                     })
                                     
                                   }
                                   
@@ -191,6 +206,13 @@ class App extends Component {
                               
                                               
                         }
+
+                        function getMobileOperatingSystem() {
+                          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                          // iOS detection from: http://stackoverflow.com/a/9039885/177710
+                          if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                            return "iOS";
+                          }}
   
                         // this.get.bind(this)
                         
@@ -212,10 +234,11 @@ class App extends Component {
 
                 } 
            }
-           handleChangeComplete = (color) => {
+           
+          handleChangeComplete = (color) => {
             this.setState({ background: color.hex });
             console.log(this.state.background)
-          };
+          }
 
           emailhandleChange(event) {    
             
@@ -252,7 +275,7 @@ class App extends Component {
           }
           
           
-
+          
 
   render(){
   return (
