@@ -179,7 +179,7 @@ class App extends Component {
                                         self.setState({statususer:'downloaded and ready for printing! :)'})
                                           
                                         // auto download the pdf received as the response
-                                        if (getMobileOperatingSystem() != 'iOS') {
+                                        if (getMobileOperatingSystem() !== 'iOS') {
                                               console.log("not ios")
                                               var blob_file = new File([new Blob([res.data])], "sample")
                                               const url = window.URL.createObjectURL(blob_file);
@@ -194,7 +194,14 @@ class App extends Component {
                                               var reader = new FileReader();
                                               var out = new Blob([res.data], {type: 'application/pdf'});
                                               reader.onload = function(e){
-                                              window.location.href = reader.result;}
+                                                var blob_file = new File([new Blob([res.data])], "sample")
+                                                const url = window.URL.createObjectURL(blob_file);
+                                                const link = document.createElement('a');
+                                                link.href = url;
+                                                link.setAttribute('download', 'Ready to print Digital Album.pdf');
+                                                document.body.appendChild(link);
+                                                link.click();
+                                                link.remove();}
                                               reader.readAsDataURL(out);
                                              }
                                      })
