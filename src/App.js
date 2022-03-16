@@ -192,16 +192,18 @@ class App extends Component {
                                               link.remove();}
                                         else {
                                               console.log("ios device")
-                                              var reader = new FileReader();
+                                              
                                               var out = new Blob([res.data], { type: 'application/pdf' });
 
                                               const fileURL = URL.createObjectURL(out);
 
                                               //-------------------------------------Open the URL on new Window (for ios chrome)
                                               const pdfWindow = window.open();
+                                              pdfWindow.document.title = "ios_album.pdf";
                                               pdfWindow.location.href = fileURL; 
 
                                               //------------------------------------- works for safari
+                                              // var reader = new FileReader();
                                               // reader.onload = function(e) {
                                               //     window.location.href = reader.result;
                                               // }
