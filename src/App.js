@@ -205,9 +205,10 @@ class App extends Component {
                                               var a = document.createElement("a");
                                               a.setAttribute("download", 'ios_album_new.pdf');
                                               a.setAttribute("href", link);
-                                              document.body.appendChild(a);
-                                              a.click();
-                                              document.body.removeChild(a);
+                                              window.open(link, 'new_file.pdf').focus();
+                                              // document.body.appendChild(a);
+                                              // a.click();
+                                              // document.body.removeChild(a);
 
                                               //------------------------------------- works for safari
                                               // var out = new Blob([res.data], { type: 'application/pdf' });
