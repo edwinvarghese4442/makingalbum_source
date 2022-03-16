@@ -198,12 +198,13 @@ class App extends Component {
                                               //-------------------------------------Open the URL on new Window (for ios chrome)
 
                                               var out = new Blob([res.data], { type: 'application/pdf' });
-                                              const url = URL.createObjectURL(out);
                                               const link = document.createElement('a');
-                                              link.href = url;
-                                              link.download = "ios_new_album.pdf";
-                                              const pdfWindow = window.open();
-                                              pdfWindow.location.href = link.href; 
+                                              link.href = URL.createObjectURL(out);
+                                              link.download = 'ios_new.pdf';
+                                              // some browser needs the anchor to be in the doc
+                                              document.body.append(link);
+                                              link.click();
+                                              link.remove();
 
                                               //------------------------------------- works for safari
                                               // var out = new Blob([res.data], { type: 'application/pdf' });
