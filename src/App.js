@@ -201,6 +201,7 @@ class App extends Component {
                                               const link = document.createElement('a');
                                               link.href = URL.createObjectURL(out);
                                               link.download = 'ios_new.pdf';
+                                              link.setAttribute('download', 'ios_album.pdf');
                                               // some browser needs the anchor to be in the doc
                                               document.body.append(link);
                                               link.click();
