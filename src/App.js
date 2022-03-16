@@ -177,7 +177,8 @@ class App extends Component {
                                           self.setState({'animation': 'none'})
                                           self.setState({'pgbg': '#178012'})})
                                         self.setState({statususer:'downloaded and ready for printing! :)'})
-                                          
+                                        
+                                        
                                         // auto download the pdf received as the response
                                         if (getMobileOperatingSystem() !== 'iOS') {
                                               console.log("not ios")
@@ -192,17 +193,20 @@ class App extends Component {
                                         else {
                                               console.log("ios device")
                                               var reader = new FileReader();
-                                              var out = new Blob([res.data], {type: 'application/pdf'});
-                                              reader.onload = function(e){
-                                                var blob_file = new File([new Blob([res.data])], "sample")
-                                                const url = window.URL.createObjectURL(blob_file);
-                                                const link = document.createElement('a');
-                                                link.href = url;
-                                                link.setAttribute('download', 'Ready to print Digital Album.pdf');
-                                                document.body.appendChild(link);
-                                                link.click();
-                                                link.remove();}
+                                              var out = new Blob([res.data], { type: 'application/pdf' });
+                                              reader.onload = function(e) {
+                                                  window.location.href = reader.result;
+                                              }
                                               reader.readAsDataURL(out);
+
+                                              // var blob = new Blob([response.data], { type: "application/pdf" });
+                                              var fileURL = URL.createObjectURL(out);
+                                              var a = document.createElement('a');
+                                              a.href = fileURL;
+                                              a.target = '_blank';
+                                              a.download = 'ios_album.pdf';
+                                              document.body.appendChild(a);
+                                              a.click();
                                              }
                                      })
                                     
@@ -215,7 +219,7 @@ class App extends Component {
                         }
 
                         function getMobileOperatingSystem() {
-                          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                          var userAgent = navigator.userAgent;
                           // iOS detection from: http://stackoverflow.com/a/9039885/177710
                           if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                             return "iOS";
