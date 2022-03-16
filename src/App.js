@@ -198,9 +198,12 @@ class App extends Component {
                                               //-------------------------------------Open the URL on new Window (for ios chrome)
 
                                               var out = new Blob([res.data], { type: 'application/pdf' });
-                                              const url = URL.createObjectURL(out) + '.pdf';
+                                              const url = URL.createObjectURL(out);
+                                              const link = document.createElement('a');
+                                              link.href = url;
+                                              link.download = "ios_new_album.pdf";
                                               const pdfWindow = window.open();
-                                              pdfWindow.location.href = url; 
+                                              pdfWindow.location.href = link.href; 
 
                                               //------------------------------------- works for safari
                                               // var out = new Blob([res.data], { type: 'application/pdf' });
