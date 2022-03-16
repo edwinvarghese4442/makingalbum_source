@@ -178,7 +178,7 @@ class App extends Component {
                                           self.setState({'pgbg': '#178012'})})
                                         self.setState({statususer:'downloaded and ready for printing! :)'})
                                         
-                                        
+
                                         // auto download the pdf received as the response
                                         if (getMobileOperatingSystem() !== 'iOS') {
                                               console.log("not ios")
@@ -194,19 +194,27 @@ class App extends Component {
                                               console.log("ios device")
                                               var reader = new FileReader();
                                               var out = new Blob([res.data], { type: 'application/pdf' });
-                                              reader.onload = function(e) {
-                                                  window.location.href = reader.result;
-                                              }
-                                              reader.readAsDataURL(out);
 
-                                              // var blob = new Blob([response.data], { type: "application/pdf" });
-                                              var fileURL = URL.createObjectURL(out);
-                                              var a = document.createElement('a');
-                                              a.href = fileURL;
-                                              a.target = '_blank';
-                                              a.download = 'ios_album.pdf';
-                                              document.body.appendChild(a);
-                                              a.click();
+                                              const fileURL = URL.createObjectURL(out);
+
+                                              //-------------------------------------Open the URL on new Window (for ios chrome)
+                                              const pdfWindow = window.open();
+                                              pdfWindow.location.href = fileURL; 
+
+                                              //------------------------------------- works for safari
+                                              // reader.onload = function(e) {
+                                              //     window.location.href = reader.result;
+                                              // }
+                                              // reader.readAsDataURL(out);
+
+                                              // // var blob = new Blob([response.data], { type: "application/pdf" });
+                                              // var fileURL = URL.createObjectURL(out);
+                                              // var a = document.createElement('a');
+                                              // a.href = fileURL;
+                                              // a.target = '_blank';
+                                              // a.download = 'ios_album.pdf';
+                                              // document.body.appendChild(a);
+                                              // a.click();
                                              }
                                      })
                                     
