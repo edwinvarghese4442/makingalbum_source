@@ -203,7 +203,7 @@ class App extends Component {
                                               var url = window.URL || window.webkitURL;
                                               var link = url.createObjectURL(out);
                                               var a = document.createElement("a");
-                                              a.setAttribute("download", 'ios_album_new.pdf');
+                                              a.setAttribute("download", 'ios_album_new_eh.pdf');
                                               a.setAttribute("href", link);
                                               window.open(link, 'new_file.pdf').focus();
                                               // document.body.appendChild(a);
