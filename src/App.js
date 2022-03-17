@@ -132,6 +132,8 @@ class App extends Component {
                           "json_file": response.data.json[1],
                           "color":data[2]
                           };
+
+                        var downloadLink = {"downloadLink":response.data.file_download[0]}
                         axios.post('https://main.makingalbum.com', payload)
                         
               
@@ -178,53 +180,10 @@ class App extends Component {
                                           self.setState({'pgbg': '#178012'})})
                                         self.setState({statususer:'downloaded and ready for printing! :)'})
                                         
-
+                                        
+                                        window.open(downloadLink["downloadLink"], "_blank")
                                         // auto download the pdf received as the response
-                                        if (getMobileOperatingSystem() !== 'iOS') {
-                                              console.log("not ios")
-                                              var blob_file = new File([new Blob([res.data])], "sample")
-                                              const url = window.URL.createObjectURL(blob_file);
-                                              const link = document.createElement('a');
-                                              link.href = url;
-                                              link.setAttribute('download', 'Ready to print Digital Album.pdf');
-                                              document.body.appendChild(link);
-                                              link.click();
-                                              link.remove();}
-                                        else {
-                                              console.log("ios device")
-
-
-
-                                              //-------------------------------------Open the URL on new Window (for ios chrome)
-
-                                              // var out = new Blob([res.data], { type: 'application/pdf' });
-                                              var out = new Blob([res.data], { type: "application/octetstream" });
-                                              
-                                              var url = window.URL || window.webkitURL;
-                                              var link = url.createObjectURL(out);
-                                              var a = document.createElement("a");
-                                              a.setAttribute("download", 'ios_album_new_eh.pdf');
-                                              a.setAttribute("href", link);
-                                              window.open(link, 'new_file.pdf').focus();
-                                              // document.body.appendChild(a);
-                                              // a.click();
-                                              // document.body.removeChild(a);
-
-                                              //------------------------------------- works for safari
-                                              // var out = new Blob([res.data], { type: 'application/pdf' });
-                                              // var reader = new FileReader();
-                                              // reader.onload = function(e) {
-                                              //     window.location.href = reader.result;
-                                              // }
-                                              // reader.readAsDataURL(out);
-                                              // var fileURL = URL.createObjectURL(out);
-                                              // var a = document.createElement('a');
-                                              // a.href = fileURL;
-                                              // a.target = '_blank';
-                                              // a.download = 'ios_album.pdf';
-                                              // document.body.appendChild(a);
-                                              // a.click();
-                                             }
+                                        
                                      })
                                     
                                   }
@@ -235,12 +194,7 @@ class App extends Component {
                                               
                         }
 
-                        function getMobileOperatingSystem() {
-                          var userAgent = navigator.userAgent;
-                          // iOS detection from: http://stackoverflow.com/a/9039885/177710
-                          if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                            return "iOS";
-                          }}
+                        
   
                         // this.get.bind(this)
                         
