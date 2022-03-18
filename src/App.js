@@ -195,19 +195,19 @@ class App extends Component {
                                         // works for safari
                                         console.log('safari')
                                         window.location.assign(downloadLink["downloadLink"])
-                                        var out = new Blob([res.data], { type: 'application/pdf' });
-                                        var reader = new FileReader();
-                                        reader.onload = function(e) {
-                                            window.location.href = reader.result;
-                                        }
-                                        reader.readAsDataURL(out);
-                                        var fileURL = URL.createObjectURL(out);
-                                        var a = document.createElement('a');
-                                        a.href = fileURL;
-                                        a.target = '_blank';
-                                        a.download = 'Ready_to_print_albumz.pdf';
-                                        document.body.appendChild(a);
-                                        a.click();
+                                        // var out = new Blob([res.data], { type: 'application/pdf' });
+                                        // var reader = new FileReader();
+                                        // reader.onload = function(e) {
+                                        //     window.location.href = reader.result;
+                                        // }
+                                        // reader.readAsDataURL(out);
+                                        // var fileURL = URL.createObjectURL(out);
+                                        // var a = document.createElement('a');
+                                        // a.href = fileURL;
+                                        // a.target = '_blank';
+                                        // a.download = 'Ready_to_print_albumz.pdf';
+                                        // document.body.appendChild(a);
+                                        // a.click();
                                         }
                                         
                                      })
