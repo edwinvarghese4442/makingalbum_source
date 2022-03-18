@@ -192,14 +192,19 @@ class App extends Component {
 
                                         {
                                         // works for safari
-                                        var blob_file = new File([new Blob([res.data])], "sample")
-                                        const url = window.URL.createObjectURL(blob_file);
-                                        const link = document.createElement('a');
-                                        link.href = url;
-                                        link.setAttribute('download', 'Ready to print Digital Album.pdf');
-                                        document.body.appendChild(link);
-                                        link.click();
-                                        link.remove();
+                                        var out = new Blob([res.data], { type: 'application/pdf' });
+                                        var reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            window.location.href = reader.result;
+                                        }
+                                        reader.readAsDataURL(out);
+                                        var fileURL = URL.createObjectURL(out);
+                                        var a = document.createElement('a');
+                                        a.href = fileURL;
+                                        a.target = '_blank';
+                                        a.download = 'Ready_to_print_album.pdf';
+                                        document.body.appendChild(a);
+                                        a.click();
                                         }
                                         
                                      })
