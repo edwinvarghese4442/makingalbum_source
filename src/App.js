@@ -173,16 +173,34 @@ class App extends Component {
                                   {
                                     console.log('file is ready')
                                     axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
-                                    
+                                        
+                                        
+                                        
                                         // change the animated loading bar state and change the text as well
                                         self.setState({pbar: 220, 'bgc': '#178012'}, () => {
                                           self.setState({'animation': 'none'})
                                           self.setState({'pgbg': '#178012'})})
                                         self.setState({statususer:'downloaded and ready for printing! :)'})
                                         
-                                        
-                                        window.open(downloadLink["downloadLink"], "_blank")
-                                        // auto download the pdf received as the response
+                                        if (safariBrowserCheck !== 'safari') 
+                                        {
+                                          // works for all browsers except iOS safari
+                                          window.open(downloadLink["downloadLink"], "_blank")
+                                        }
+
+                                        else
+
+                                        {
+                                        // works for safari
+                                        var blob_file = new File([new Blob([res.data])], "sample")
+                                        const url = window.URL.createObjectURL(blob_file);
+                                        const link = document.createElement('a');
+                                        link.href = url;
+                                        link.setAttribute('download', 'Ready to print Digital Album.pdf');
+                                        document.body.appendChild(link);
+                                        link.click();
+                                        link.remove();
+                                        }
                                         
                                      })
                                     
@@ -193,8 +211,15 @@ class App extends Component {
                               
                                               
                         }
+                        function safariBrowserCheck() {
+                        var userAgent = window.navigator.userAgent;
 
-                        
+                        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+                          return "safari";
+                        }
+                        else {
+                          // Anything else
+                            }       }                            
   
                         // this.get.bind(this)
                         
