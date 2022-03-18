@@ -194,6 +194,7 @@ class App extends Component {
                                         {
                                         // works for safari
                                         console.log('safari')
+                                        window.location.assign(downloadLink["downloadLink"])
                                         var out = new Blob([res.data], { type: 'application/pdf' });
                                         var reader = new FileReader();
                                         reader.onload = function(e) {
