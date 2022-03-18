@@ -182,8 +182,9 @@ class App extends Component {
                                           self.setState({'pgbg': '#178012'})})
                                         self.setState({statususer:'downloaded and ready for printing! :)'})
                                         
-                                        if (safariBrowserCheck !== 'safari') 
+                                        if (safariBrowserCheck() !== 'safari') 
                                         {
+                                          console.log('not safari')
                                           // works for all browsers except iOS safari
                                           window.open(downloadLink["downloadLink"], "_blank")
                                         }
@@ -192,6 +193,7 @@ class App extends Component {
 
                                         {
                                         // works for safari
+                                        console.log('safari')
                                         var out = new Blob([res.data], { type: 'application/pdf' });
                                         var reader = new FileReader();
                                         reader.onload = function(e) {
@@ -202,7 +204,7 @@ class App extends Component {
                                         var a = document.createElement('a');
                                         a.href = fileURL;
                                         a.target = '_blank';
-                                        a.download = 'Ready_to_print_album.pdf';
+                                        a.download = 'Ready_to_print_albumz.pdf';
                                         document.body.appendChild(a);
                                         a.click();
                                         }
@@ -218,11 +220,13 @@ class App extends Component {
                         }
                         function safariBrowserCheck() {
                         var userAgent = window.navigator.userAgent;
-
+                        console.log(userAgent, "user agent")
                         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+                          console.log('safari')
                           return "safari";
                         }
                         else {
+                          console.log('not safari')
                           // Anything else
                             }       }                            
   
