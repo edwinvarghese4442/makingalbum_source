@@ -31,6 +31,7 @@ class App extends Component {
     this.state.signuptext = 'sign up'
     this.state.emailvalue = ''
     this.emailhandleChange = this.emailhandleChange.bind(this);
+    this.uploadProgress = 0
   }
 
   state = {
@@ -115,15 +116,26 @@ class App extends Component {
   
   
                     //upload blob file to s3
+                    var uself = this
+                    const config = {
+                      onUploadProgress: function(progressEvent) {
+                        var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+                        console.log(percentCompleted)
+                        
+                        uself.setState({uploadProgress: percentCompleted + ' %'})
+                      }
+                    }
                     console.log("uploading file to s3",  this.state.selectedFile, typeof(this.state.selectedFile)) 
-                    axios.put(response.data.file_upload[0], this.state.selectedFile)
+                    axios.put(response.data.file_upload[0], this.state.selectedFile, config)
   
-                    const blob = new Blob([JSON.stringify({'status':'wip', 'response':'uploading your photos','pbar':80})], { type: 'application/json' });
+                    const blob = new Blob([JSON.stringify({'status':'wip', 'response':'uploading your photos ', 'pbar':80})], { type: 'application/json' });
                     var blob_file = new File([blob], "k.json")
   
                     // pass back a json file with details like wip and percentage
+                    
                     axios.put(response.data.json_put[0], blob_file).then(res => 
                       {
+                        
                         //call axios async
                         var payload = {
                           "process_type": "pdftoimage",
@@ -145,7 +157,7 @@ class App extends Component {
                         function get() 
                         
                         {
-                          
+                          self.setState({uploadProgress: ''})
                               
                               axios.get(response.data.json[0]).then(res => 
                                 {
@@ -283,7 +295,7 @@ class App extends Component {
                 this.setState({signuptext:'sign up'})
                 this.setState({sendanimate:'#65a7e5'})}, 3000)});
             console.log('sending mail now')
-            const payload = {"email":this.state.emailvalue}
+            const payload = {"email": this.state.emailvalue}
             axios.post('https://main.makingalbum.com', payload)
             console.log('sent')
               
@@ -353,7 +365,7 @@ class App extends Component {
 
 
       <div className='statususer' style = {{opacity: this.state.display}}>
-        <p> {this.state.statususer} </p>
+        <p> {this.state.statususer} {this.state.uploadProgress}</p>
       </div>
 
 
