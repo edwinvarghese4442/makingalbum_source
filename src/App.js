@@ -295,7 +295,7 @@ class App extends Component {
                 this.setState({signuptext:'sign up'})
                 this.setState({sendanimate:'#65a7e5'})}, 3000)});
             console.log('sending mail now')
-            const payload = {"email": this.state.emailvalue}
+            const payload = {"email": this.state.emailvalue, "process_type": "email"}
             axios.post('https://main.makingalbum.com', payload)
             console.log('sent')
               
