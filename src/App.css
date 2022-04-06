@@ -199,7 +199,7 @@
   background-color: #b6b3b3;
   position: relative;
   display: flex;
-  top: -300px;
+  top: -34px;
   margin: 0 auto;
   width: 181px;
 }
@@ -234,7 +234,7 @@
   font-style: italic;
   display: flex;
   position: relative;
-  top: -345px;
+  top: -78px;
   justify-content: center;
   margin: 0 auto;
   text-align: center;
@@ -242,7 +242,7 @@
 
 .feedback {
 	position: relative;
-  margin-top: -210px;
+  margin-top: 88px;
   display: grid;
   justify-content: center;
   transform: scale(1.1);

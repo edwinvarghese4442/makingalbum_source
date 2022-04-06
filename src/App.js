@@ -295,7 +295,7 @@ class App extends Component {
                 this.setState({signuptext:'sign up'})
                 this.setState({sendanimate:'#65a7e5'})}, 3000)});
             console.log('sending mail now')
-            const payload = {"email": this.state.emailvalue, "process_type": "email"}
+            const payload = {"cx_email": this.state.emailvalue, "process_type": "email"}
             axios.post('https://main.makingalbum.com', payload)
             console.log('sent')
               
@@ -338,20 +338,6 @@ class App extends Component {
       
         <div>
           <button className = 'downloadButton' onClick={() =>this.downloadFile(['.zip','.pdf', this.state.background])}>make album</button>
-        </div>
-      </div>
-
-
-
-      <div  className='colorpalette' style = {{opacity:this.state.displayPalette, pointerEvents:this.state.pointerevents}}>
-        <button className='cCloseButton' onClick={() =>this.openColorPalette()}>
-          close
-        </button>
-        <div>
-          <ChromePicker 
-            color={this.state.background }
-            onChangeComplete={ this.handleChangeComplete }
-          />
         </div>
       </div>
       
