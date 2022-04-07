@@ -310,7 +310,7 @@ class App extends Component {
   return (
     
     <div className="background">
-      
+      <div className="cookiebar"> Hey there, this website rely on cookies to give you the best experience. Please read our privacy policy to understand more  <button className='cookie_button'>okay!</button></div>
       <h1 className = "title1">FREE 'ready to print' digital photo album</h1>
       <h2 className = "title2">..because it's always better to keep a printed copy of your photos</h2>
       
@@ -369,7 +369,7 @@ class App extends Component {
         
       </div>
 
-      <p className='writeemail'>reach us at hello@makingalbum.com</p>
+      <p className='writeemail'>reach us at hellomakingalbum@gmail.com</p>
 
 
       <div className='disclaimers'>
