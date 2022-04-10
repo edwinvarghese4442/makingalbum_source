@@ -310,7 +310,8 @@ class App extends Component {
   return (
     
     <div className="background">
-      <div className="cookiebar"> Hey there, by continuing to browse the site, you agree to our use of cookies  <button className='cookie_button'>okay!</button></div>
+      <div className="cookiebar"> Hey there, by continuing to browse the site, you agree to our use of cookies according to our privacy policy</div>
+      <button className='cookie_button'>okay!</button>
       <h1 className = "title1">FREE 'ready to print' digital photo album</h1>
       <h2 className = "title2">..because it's always better to keep a printed copy of your photos</h2>
       
