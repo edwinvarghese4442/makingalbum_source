@@ -52,6 +52,7 @@ class App extends Component {
     this.state.emailvalue = ''
     this.emailhandleChange = this.emailhandleChange.bind(this);
     this.uploadProgress = 0
+    this.thumbColor = null
     
   }
 
@@ -63,14 +64,28 @@ class App extends Component {
   fileSelectedHandler = (event) => {
 
     // assign uploaded file to 'selectedFile' variable (state is being changed now)
-    this.setState({
-      selectedFile: event.target.files
-    })
-    console.log("uploaded file")
-    console.log(event.target.files)
-    
-    
+    // this.setState({
+    //   selectedFile: null
+    // })
+    // console.log("uploaded file")
+    // console.log(event.target.files.length)
+    if (event.target.files.length > 30) {
+      console.log("selected more than 30 files")
+      this.setState({
+          nofiles: 'please select less than 31 images'
+        })
+        this.setState({
+          thumbColor: 'red'
+        })
+      
+    }
+    else {
 
+      this.setState({
+        thumbColor: 'grey'
+      })
+    
+      console.log("selected less than 30 files")
     // zip the entire user uploaded files and covert it into a blob and keep it ready
     const zip = require('jszip')();
     let files = event.target.files;
@@ -100,7 +115,7 @@ class App extends Component {
           nofiles: event.target.files.length + ' image selected'
         })
         }
-      }
+      }}
     
 
   downloadFile (data) {
@@ -201,10 +216,16 @@ class App extends Component {
 
                                   } 
                                   
-                                  else 
+                                  else if(json_value['status'] === 'error') {
+                                    self.setState({pbar: 220, 'bgc': '#178012'}, () => {
+                                      self.setState({'animation': 'none'})
+                                      self.setState({'pgbg': 'dark red'})})
+                                    self.setState({statususer:json_value['response']})
+                                  }
+                                  else
                                   
                                   {
-                                    console.log('file is ready')
+                                    console.log('file is ready', json_value)
                                     axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
                                         
                                         
@@ -357,7 +378,7 @@ class App extends Component {
 
       
       
-      <div className='thumb'>
+      <div className='thumb' style = {{color:this.state.thumbColor}}>
           {this.state.nofiles}
         </div>
 
