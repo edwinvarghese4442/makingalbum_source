@@ -6,7 +6,7 @@ import { ChromePicker } from 'react-color';
 import { NavLink } from 'react-router-dom';
 
 class App extends Component {
-
+  
 
   constructor() {
     super()
@@ -302,6 +302,10 @@ class App extends Component {
               }
                 
           }
+
+          closeCookieBar = () => {
+
+          }
           
           
           
@@ -310,8 +314,11 @@ class App extends Component {
   return (
     
     <div className="background">
-      <div className="cookiebar"> Hey there, by continuing to browse the site, you agree to our use of cookies according to our privacy policy</div>
-      <button className='cookie_button'>okay!</button>
+      <div className="cookiebar" style = {{opacity:this.state.cookieOpacity, pointerEvents:this.state.cookiePEnone}}> <p>we rely on website cookies to make this website available for FREE forever for everyone</p><p>cookies will help us to show you personalised ads and revenue from these Ads helps us to maintain this website</p> 
+      <button className='cookie_button_yes' onClick={() =>this.closeCookieBar()}>that's okay!</button>
+      <button className='cookie_button_no' onClick={() =>this.closeCookieBar()}>no. I will leave the website now</button>
+    </div>
+      
       <h1 className = "title1">FREE 'ready to print' digital photo album</h1>
       <h2 className = "title2">..because it's always better to keep a printed copy of your photos</h2>
       
