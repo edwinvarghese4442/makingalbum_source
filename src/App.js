@@ -4,10 +4,30 @@ import axios from 'axios';
 import { ChromePicker } from 'react-color';
 
 import { NavLink } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+
+
 
 class App extends Component {
   
+  
+  componentDidMount() {
+    // call api or anything
+    console.log("Cookie check");
+    console.log('onload')
+            const cookies = new Cookies();
+            console.log(cookies.get('cookieConsent', 'if'));
+            if (cookies.get('cookieConsent') === 'Yes'){
+              this.setState({cookieOpacity: 0})
+              this.setState({cookiePEnone: 'None'})
+              console.log(cookies.get('cookieConsent', 'if'));
 
+            }
+            else{
+              console.log(cookies.get('cookieConsent', 'else'));
+              this.setState({cookieOpacity: 1})
+           }}
+  
   constructor() {
     super()
 
@@ -32,6 +52,7 @@ class App extends Component {
     this.state.emailvalue = ''
     this.emailhandleChange = this.emailhandleChange.bind(this);
     this.uploadProgress = 0
+    
   }
 
   state = {
@@ -303,17 +324,26 @@ class App extends Component {
                 
           }
 
-          closeCookieBar = () => {
+           
+            
 
-          }
+           closeCookieBar = () => {
+           const cookies = new Cookies();
+           cookies.set('cookieConsent', 'Yes', { path: '/' });
+            console.log(cookies.get('cookieConsent')); 
+            this.setState({cookieOpacity: 0})
+            this.setState({cookiePEnone: 'None'})}
+
           
+           
           
           
 
   render(){
+    
   return (
     
-    <div className="background">
+    <div className="background" >
       <div className="cookiebar" style = {{opacity:this.state.cookieOpacity, pointerEvents:this.state.cookiePEnone}}> <p>we rely on website cookies to make this website available for FREE forever for everyone</p><p>cookies will help us to show you personalised ads and revenue from these Ads helps us to maintain this website</p> 
       <button className='cookie_button_yes' onClick={() =>this.closeCookieBar()}>I understand </button>
       <button className='cookie_button_no' onClick={() =>this.closeCookieBar()}>no. I will leave the website now</button>

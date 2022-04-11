@@ -57,10 +57,10 @@
   right: 0;
   left: 14px;
   margin: auto;
-  margin-top: 333px;
+  margin-top: 16px;
   z-index: 10;
   background-color: #529ff7;
-  opacity: .9;
+  opacity: .7;
   border-radius: 15px;
   font-size: 11px;
   color: #ffffff;
@@ -69,44 +69,40 @@
   border-width: 1px;
   box-shadow: 1px 1px 10px 2px #7bc6f3;
   padding: 10px 10px 10px 10px;
-  opacity: 1;
   height: 159px;
+  transition: .25s;
     
 }
 
 .cookie_button_yes {
   border-radius: 5px;
-    /* background-image: linear-gradient(45deg, #813316, #f97334); */
-    /* border: rgb(255, 255, 255); */
-    color: #38547c;
-    font-size: larger;
-    position: relative;
-    right: 0;
-    margin-right: 609px;
-    margin-top: -6px;
-    z-index: 12;
-    box-shadow: 1px 1px 10px px #a13601;
-    width: 264px;
-    background-color: #ededed;
-    height: 30px;
-    font-family: 'Encode Sans', sans-serif;
+  color: #38547c;
+  font-size: larger;
+  position: relative;
+  right: 0;
+  margin-right: 609px;
+  margin-top: -6px;
+  z-index: 12;
+  box-shadow: 1px 1px 10px px #a13601;
+  width: 264px;
+  background-color: #ededed;
+  height: 30px;
+  font-family: 'Encode Sans', sans-serif;
 
 }
 
 .cookie_button_no {
   border-radius: 5px;
-    /* background-image: linear-gradient(45deg, #813316, #f97334); */
-    /* border: rgb(255, 255, 255); */
-    color: #585858;
-    font-size: small;
-    position: relative;
-    right: -20px;
-    margin-right: 66%;
-    margin-top: 9px;
-    z-index: 12;
-    box-shadow: 1px 1px 10px px #a13601;
-    width: 221px;
-    background-color: #acd4f9;
+  color: #585858;
+  font-size: small;
+  position: relative;
+  right: -20px;
+  margin-right: 66%;
+  margin-top: 9px;
+  z-index: 12;
+  box-shadow: 1px 1px 10px px #a13601;
+  width: 221px;
+  background-color: #acd4f9;
 }
 
  .title1{
@@ -184,6 +180,10 @@
    outline: auto;
  }
 
+ .uploadButton:active{
+  background-color:rgb(73, 171, 64);
+ }
+
  @keyframes example1 {
   0%   {background-color: rgb(255, 255, 255);}
   50%  {background-color: rgb(148, 206, 148);}
@@ -248,6 +248,10 @@
   color:rgb(11, 63, 105);
   background-color: #f9fafb;
   outline: auto;
+}
+
+.downloadButton:active{
+  background-color: rgb(79, 130, 172);;
 }
 
 .downloadButton:hover{
