@@ -55,8 +55,9 @@
     /* text-align: center; */
     width: 270px;
     right: 0;
-    margin-right: 64%;
-    margin-top: 684px;
+    left: 14px;
+    margin: auto;
+    margin-top: 333px;
     z-index: 10;
     background-color: azure;
     opacity: .9;
@@ -75,18 +76,19 @@
 
 .cookie_button_yes {
   border-radius: 5px;
-  /* background-image: linear-gradient(45deg, #813316, #f97334); */
-  /* border: rgb(255, 255, 255); */
-  color: white;
-  font-size: larger;
-  position: relative;
-  right: 0;
-  margin-right: 609px;
-  margin-top: -2px;
-  z-index: 12;
-  box-shadow: 1px 1px 10px px #a13601;
-  width: 264px;
-  background-color: #4082c1;
+    /* background-image: linear-gradient(45deg, #813316, #f97334); */
+    /* border: rgb(255, 255, 255); */
+    color: white;
+    font-size: larger;
+    position: relative;
+    right: 0;
+    margin-right: 609px;
+    margin-top: -6px;
+    z-index: 12;
+    box-shadow: 1px 1px 10px px #a13601;
+    width: 264px;
+    background-color: #4082c1;
+    height: 30px;
 }
 
 .cookie_button_no {
