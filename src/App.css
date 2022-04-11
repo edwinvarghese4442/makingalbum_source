@@ -51,26 +51,26 @@
 
  .cookiebar{
   position: fixed;
-    background-color: #fff;
-    /* text-align: center; */
-    width: 270px;
-    right: 0;
-    left: 14px;
-    margin: auto;
-    margin-top: 333px;
-    z-index: 10;
-    background-color: azure;
-    opacity: .9;
-    border-radius: 15px;
-    font-size: 11px;
-    color: #00256e;
-    border: #b1bcd3;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 1px 1px 10px 2px #7bc6f3;
-    padding: 10px 10px 10px 10px;
-    opacity: 1;
-    height: 159px;
+  background-color: #fff;
+  /* text-align: center; */
+  width: 270px;
+  right: 0;
+  left: 14px;
+  margin: auto;
+  margin-top: 333px;
+  z-index: 10;
+  background-color: #529ff7;
+  opacity: .9;
+  border-radius: 15px;
+  font-size: 11px;
+  color: #ffffff;
+  border: #b1bcd3;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 1px 1px 10px 2px #7bc6f3;
+  padding: 10px 10px 10px 10px;
+  opacity: 1;
+  height: 159px;
     
 }
 
@@ -78,7 +78,7 @@
   border-radius: 5px;
     /* background-image: linear-gradient(45deg, #813316, #f97334); */
     /* border: rgb(255, 255, 255); */
-    color: white;
+    color: #38547c;
     font-size: larger;
     position: relative;
     right: 0;
@@ -87,15 +87,17 @@
     z-index: 12;
     box-shadow: 1px 1px 10px px #a13601;
     width: 264px;
-    background-color: #4082c1;
+    background-color: #ededed;
     height: 30px;
+    font-family: 'Encode Sans', sans-serif;
+
 }
 
 .cookie_button_no {
   border-radius: 5px;
     /* background-image: linear-gradient(45deg, #813316, #f97334); */
     /* border: rgb(255, 255, 255); */
-    color: #898a8b;
+    color: #585858;
     font-size: small;
     position: relative;
     right: -20px;
@@ -189,7 +191,7 @@
 }
 
  .uploadButton:hover {
-   background:rgb(165, 255, 180)
+  cursor: pointer;
  }
 
 
@@ -249,7 +251,7 @@
 }
 
 .downloadButton:hover{
-  background:rgb(203, 224, 255)
+  cursor: pointer;
 }
 
 .progressBg {

@@ -315,7 +315,7 @@ class App extends Component {
     
     <div className="background">
       <div className="cookiebar" style = {{opacity:this.state.cookieOpacity, pointerEvents:this.state.cookiePEnone}}> <p>we rely on website cookies to make this website available for FREE forever for everyone</p><p>cookies will help us to show you personalised ads and revenue from these Ads helps us to maintain this website</p> 
-      <button className='cookie_button_yes' onClick={() =>this.closeCookieBar()}>that's okay!</button>
+      <button className='cookie_button_yes' onClick={() =>this.closeCookieBar()}>I understand </button>
       <button className='cookie_button_no' onClick={() =>this.closeCookieBar()}>no. I will leave the website now</button>
     </div>
       
