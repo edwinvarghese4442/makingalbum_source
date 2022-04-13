@@ -37,7 +37,7 @@ class App extends Component {
     this.state.bgc = '#ff2525'
     this.state.pgbg = '#ff2525'
     this.state.statususer = 'waiting for users input'
-    this.state.animation = 'example 200ms infinite'
+    this.state.animation = 'none'
     this.state.background = '#FFFFFF'
     
     this.state.mtprogress = 'none'
@@ -135,7 +135,7 @@ class App extends Component {
 
                   // initiate dummy portion of the loader
 
-                  this.setState({'animation': 'example 200ms infinite'})
+                  this.setState({'animation': 'example 20ms infinite'})
                   this.setState({'pgbg': '#ff2525'})
                   this.setState({display: 1})
                   this.setState({pbar: 30})
@@ -143,7 +143,7 @@ class App extends Component {
 
 
                   // get external url path of the final file
-                  axios.post('https://main.makingalbum.com', payload)
+                  axios.post('https://main.makingalbum.com', payload, {timeout: 2000})
                     .then(response => 
                   { 
                     // display the urls along the file path
@@ -293,7 +293,13 @@ class App extends Component {
                         
                       });
                       
-                  });
+                  }).catch(error => {     
+                  this.setState({statususer:'oh dear, I am not able to reach server. please try later'})
+                  this.setState({'pgbg': 'red'})
+                  this.setState({'animation': 'none'})
+                  this.setState({display: 1})
+                  this.setState({pbar: 210})
+                    });
       
   
                 } else{

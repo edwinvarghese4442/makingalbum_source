@@ -274,6 +274,7 @@
 	background: rgba(255, 98, 98, 0.911);
   animation: example 200ms infinite;
   margin-top: none;
+  /* transition: .3s; */
 }
 
 @keyframes example {
