@@ -211,7 +211,7 @@ class App extends Component {
                                           get()
                                       }
                                       .bind(this),
-                                      1000
+                                      3000
                                       ); // call recursive function like this inorder to avoid a screen freeze (for eg. you will not be able to do even a right click)
 
                                   } 
@@ -371,9 +371,9 @@ class App extends Component {
   return (
     
     <div className="background" >
-      <div className="cookiebar" style = {{opacity:this.state.cookieOpacity, pointerEvents:this.state.cookiePEnone}}> <p>we rely on website cookies to make this website available for FREE forever for everyone</p><p>cookies will help us to show you personalised ads and revenue from these Ads helps us to maintain this website</p> 
+      <div className="cookiebar" style = {{opacity:this.state.cookieOpacity, pointerEvents:this.state.cookiePEnone}}> <p>By clicking on 'I understand', you agree to our use of the website cookies</p><p>cookies will help us to show you personalised ads and revenue from these Ads helps us to maintain this website so that you can use it for FREE</p> 
       <button className='cookie_button_yes' onClick={() =>this.closeCookieBar()}>I understand </button>
-      <button className='cookie_button_no' onClick={() =>this.closeCookieBar()}>no. I will leave the website now</button>
+      <button className='cookie_button_no' onClick={() =>this.closeCookieBar()}><NavLink to="/Privacy" className= 'privacycss'>Learn More</NavLink></button>
     </div>
       
       <h1 className = "title1">FREE 'ready to print' digital photo album</h1>
