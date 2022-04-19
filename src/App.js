@@ -48,7 +48,7 @@ class App extends Component {
     this.state.displayPalette = 0.0
     this.state.pointerevents = 'none'
     this.state.sendanimate = 'none'
-    this.state.signuptext = 'sign up'
+    this.state.signuptext = 'subscribe'
     this.state.emailvalue = ''
     this.emailhandleChange = this.emailhandleChange.bind(this);
     this.uploadProgress = 0
@@ -422,7 +422,7 @@ class App extends Component {
 
       <div className = 'feedback'>
         
-        <p className='substext'> for exclusive updates, promotions and product launch information that are coming soon! </p>
+        <p className='substext'> for receiving exclusive updates, promotions and product launch information that are coming soon! </p>
         <div class = 'email'>
           <p class = 'emailtext'></p>
           <input class = 'emailContent' placeholder = 'your email id' type = 'text' value = {this.state.emailvalue} onChange={this.emailhandleChange}></input>

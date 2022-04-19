@@ -323,7 +323,7 @@
 }
 .substext::before{
   color: rgb(0, 100, 194);
-  content: "sign up";
+  content: "subscribe";
   font-size: 18px;
   
 }
