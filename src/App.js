@@ -143,7 +143,7 @@ class App extends Component {
 
 
                   // get external url path of the final file
-                  axios.post('https://main.makingalbum.com', payload, {timeout: 2000})
+                  axios.post('https://main.makingalbum.com', payload, {timeout: 10000})
                     .then(response => 
                   { 
                     // display the urls along the file path
@@ -439,8 +439,7 @@ class App extends Component {
 
       <div className='disclaimers'>
         <NavLink to="/About" className= 'aboutcss'>About us</NavLink>
-        <NavLink to="/Privacy" className= 'privacycss'>Privacy policy</NavLink>
-        <NavLink to="/Terms" className= 'termscss'>Terms of use</NavLink>
+        <NavLink to="/Privacy" className= 'privacycss'>Cookie and Privacy policy</NavLink>
       </div>
 
       <p className= 'ty'>happy album making!</p>
