@@ -13,18 +13,18 @@ class App extends Component {
   
   componentDidMount() {
     // call api or anything
-    console.log("Cookie check");
-    console.log('onload')
+    // console.log("Cookie check");
+    // console.log('onload')
             const cookies = new Cookies();
-            console.log(cookies.get('cookieConsent', 'if'));
+            // console.log(cookies.get('cookieConsent', 'if'));
             if (cookies.get('cookieConsent') === 'Yes'){
               this.setState({cookieOpacity: 0})
               this.setState({cookiePEnone: 'None'})
-              console.log(cookies.get('cookieConsent', 'if'));
+              // console.log(cookies.get('cookieConsent', 'if'));
 
             }
             else{
-              console.log(cookies.get('cookieConsent', 'else'));
+              // console.log(cookies.get('cookieConsent', 'else'));
               this.setState({cookieOpacity: 1})
            }}
   
@@ -70,7 +70,7 @@ class App extends Component {
     // console.log("uploaded file")
     // console.log(event.target.files.length)
     if (event.target.files.length > 30) {
-      console.log("selected more than 30 files")
+      // console.log("selected more than 30 files")
       this.setState({
           nofiles: 'please select less than 31 images'
         })
@@ -85,7 +85,7 @@ class App extends Component {
         thumbColor: 'grey'
       })
     
-      console.log("selected less than 30 files")
+      // console.log("selected less than 30 files")
     // zip the entire user uploaded files and covert it into a blob and keep it ready
     const zip = require('jszip')();
     let files = event.target.files;
@@ -119,7 +119,7 @@ class App extends Component {
     
 
   downloadFile (data) {
-      console.log(data,"arguments for getting URLs")
+      // console.log(data,"arguments for getting URLs")
       const payload = {
         "process_type": "url",
         "input_extension":data[0],
@@ -129,7 +129,7 @@ class App extends Component {
         "page_input": this.state.pageNumber
         };
       
-      console.log(this.state.selectedFile, "file")
+      // console.log(this.state.selectedFile, "file")
       // if 
       if (this.state.selectedFile != null) {
 
@@ -147,8 +147,8 @@ class App extends Component {
                     .then(response => 
                   { 
                     // display the urls along the file path
-                    console.log("display the urls along the file path") 
-                    console.log(response.data)
+                    // console.log("display the urls along the file path") 
+                    // console.log(response.data)
   
   
                     //upload blob file to s3
@@ -156,12 +156,12 @@ class App extends Component {
                     const config = {
                       onUploadProgress: function(progressEvent) {
                         var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                        console.log(percentCompleted)
+                        // console.log(percentCompleted)
                         
                         uself.setState({uploadProgress: percentCompleted + ' %'})
                       }
                     }
-                    console.log("uploading file to s3",  this.state.selectedFile, typeof(this.state.selectedFile)) 
+                    // console.log("uploading file to s3",  this.state.selectedFile, typeof(this.state.selectedFile)) 
                     axios.put(response.data.file_upload[0], this.state.selectedFile, config)
   
                     const blob = new Blob([JSON.stringify({'status':'wip', 'response':'uploading your photos ', 'pbar':80})], { type: 'application/json' });
@@ -203,7 +203,7 @@ class App extends Component {
                                   
                                   {
                                     self.setState({pbar: json_value['pbar'] })
-                                    console.log('still processing',i)
+                                    // console.log('still processing',i)
                                     self.setState({statususer:json_value['response']})
                                     
                                     setTimeout(
@@ -225,7 +225,7 @@ class App extends Component {
                                   else
                                   
                                   {
-                                    console.log('file is ready', json_value)
+                                    // console.log('file is ready', json_value)
                                     axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
                                         
                                         
@@ -238,7 +238,7 @@ class App extends Component {
                                         
                                         if (safariBrowserCheck() !== 'safari') 
                                         {
-                                          console.log('not safari')
+                                          // console.log('not safari')
                                           // works for all browsers except iOS safari
                                           window.open(downloadLink["downloadLink"], "_blank")
                                         }
@@ -247,7 +247,7 @@ class App extends Component {
 
                                         {
                                         // works for safari
-                                        console.log('safari')
+                                        // console.log('safari')
                                         window.location.assign(downloadLink["downloadLink"])
                                         // var out = new Blob([res.data], { type: 'application/pdf' });
                                         // var reader = new FileReader();
@@ -275,7 +275,7 @@ class App extends Component {
                         }
                         function safariBrowserCheck() {
                         var userAgent = window.navigator.userAgent;
-                        console.log(userAgent, "user agent")
+                        // console.log(userAgent, "user agent")
                         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
                           console.log('safari')
                           return "safari";
@@ -314,7 +314,7 @@ class App extends Component {
            
           handleChangeComplete = (color) => {
             this.setState({ background: color.hex });
-            console.log(this.state.background)
+            // console.log(this.state.background)
           }
 
           emailhandleChange(event) {    
@@ -342,10 +342,10 @@ class App extends Component {
               setTimeout(() => { 
                 this.setState({signuptext:'sign up'})
                 this.setState({sendanimate:'#65a7e5'})}, 3000)});
-            console.log('sending mail now')
+            // console.log('sending mail now')
             const payload = {"cx_email": this.state.emailvalue, "process_type": "email"}
             axios.post('https://main.makingalbum.com', payload)
-            console.log('sent')
+            // console.log('sent')
               
               }
                 
@@ -356,8 +356,8 @@ class App extends Component {
 
            closeCookieBar = () => {
            const cookies = new Cookies();
-           cookies.set('cookieConsent', 'Yes', { path: '/' });
-            console.log(cookies.get('cookieConsent')); 
+           cookies.set('cookieConsent', 'Yes', { path: '/', maxAge: 259200000 });
+            // console.log(cookies.get('cookieConsent')); 
             this.setState({cookieOpacity: 0})
             this.setState({cookiePEnone: 'None'})}
 
