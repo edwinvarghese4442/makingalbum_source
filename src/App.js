@@ -234,7 +234,7 @@ class App extends Component {
                                         self.setState({pbar: 220, 'bgc': '#178012'}, () => {
                                           self.setState({'animation': 'none'})
                                           self.setState({'pgbg': '#178012'})})
-                                        self.setState({statususer:'downloaded and ready for printing! :) (if you are unable to find your album, allow pop-ups for this site and check downloads)'})
+                                        self.setState({statususer:'Download complete! (allow pop-ups for this site and check downloads)'})
                                         
                                         if (safariBrowserCheck() !== 'safari') 
                                         {
