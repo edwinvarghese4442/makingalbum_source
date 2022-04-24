@@ -20,7 +20,6 @@ ReactDOM.render(
       <Switch>
       <Route path="/" component={App} exact/>
       <Route path="/Privacy" component={Privacy}/>
-      <Route path="/Terms" component={Terms}/>
       <Route path="/About" component={About}/>
     </Switch>
   </div> 
