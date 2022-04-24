@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route,  Switch } from "react-router-dom";
 import Privacy from './Privacy';
-import Terms from './Terms';
 import About from './About';
 
 
