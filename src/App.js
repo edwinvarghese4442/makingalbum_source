@@ -236,7 +236,7 @@ class App extends Component {
                                         const fileURL = URL.createObjectURL(file);
                                         // console.log(fileURL, 'ooooooobbbbbbbbbbbboooooooo', typeof(fileURL))
                                         //Open the URL on new Window
-                                        const pdfWindow = window.open();
+                                        const pdfWindow = window.open('?','_self');
                                         pdfWindow.location.href = fileURL;  
                                         
                                         // change the animated loading bar state and change the text as well
