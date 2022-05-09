@@ -5,6 +5,7 @@ function Privacy() {
 
     return (
         <div>
+            
         <h1>Privacy Policy for makingalbum</h1>
 
 <p>At www.makingalbum.com, accessible from www.makingalbum.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by www.makingalbum.com and how we use it.</p>
