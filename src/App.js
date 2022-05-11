@@ -229,13 +229,13 @@ class App extends Component {
                                     console.log(json_value, 'THE CONTENT')
                                     // var generated_url = 'https://makingalbum.s3.ap-south-1.amazonaws.com/' + json_value['file_name']
                                     var generated_url = response.data.file_download[0]
-                                    console.log(generated_url, 'thisssssss')
+                                    // console.log(generated_url, 'thisssssss')
                                     self.setState({pbar: 220, 'bgc': '#178012'}, () => {
                                             self.setState({'animation': 'none'})
                                             self.setState({'pgbg': '#178012'})})
                                           self.setState({statususer:'Download complete!'})
-                                    // const pdfWindow = window.open('?','_self');
-                                    // pdfWindow.location.href = generated_url;
+                                    const pdfWindow = window.open('?','_self');
+                                    pdfWindow.location.href = generated_url;
                                     
 
                                     // console.log('file is ready', json_value)
