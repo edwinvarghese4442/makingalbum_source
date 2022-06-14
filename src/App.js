@@ -182,7 +182,7 @@ class App extends Component {
                           "outfile_name": response.data.file_download[1],
                           "json_file": response.data.json[1],
                           "color": this.state.colorindex,
-                          "orentation": this.state.orientIndex
+                          "orientation": this.state.orientIndex
                           
                           };
 
