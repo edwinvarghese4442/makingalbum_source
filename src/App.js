@@ -53,6 +53,9 @@ class App extends Component {
     this.emailhandleChange = this.emailhandleChange.bind(this);
     this.uploadProgress = 0
     this.thumbColor = null
+
+    this.state.colorindex = 0;
+    this.state.orientIndex = 0;
     
   }
 
@@ -178,10 +181,13 @@ class App extends Component {
                           "user_file": response.data.file_upload[1],
                           "outfile_name": response.data.file_download[1],
                           "json_file": response.data.json[1],
-                          "color":data[2]
+                          "color": this.state.colorindex,
+                          "orentation": this.state.orientIndex
+                          
                           };
 
                         var downloadLink = {"downloadLink":response.data.file_download[0]}
+                        console.log(payload, 'kkkkkkkkkkkkk')
                         axios.post('https://main.makingalbum.com', payload)
                         
               
@@ -227,28 +233,37 @@ class App extends Component {
                                   {
                                     // console.log('file is ready', json_value)
                                     axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
-                                        
-                                        
-                                        
+     
+                                        console.log(res.data)
+
+                                        const file = new Blob([res.data], { type: "application/pdf" });
+                                        //Build a URL from the file
+                                        console.log('type ', typeof(res.data))
+                                        const fileURL = URL.createObjectURL(file);
+                                        // console.log(fileURL, 'ooooooobbbbbbbbbbbboooooooo', typeof(fileURL))
+                                        //Open the URL on new Window
+                                        const pdfWindow = window.open();
+                                        pdfWindow.location.href = fileURL;  
+                                                                        
                                         // change the animated loading bar state and change the text as well
                                         self.setState({pbar: 220, 'bgc': '#178012'}, () => {
                                           self.setState({'animation': 'none'})
                                           self.setState({'pgbg': '#178012'})})
-                                        self.setState({statususer:'Download complete! (allow pop-ups for this site and check downloads)'})
+                                        self.setState({statususer:'Download complete!'})
                                         
-                                        if (safariBrowserCheck() !== 'safari') 
-                                        {
-                                          // console.log('not safari')
-                                          // works for all browsers except iOS safari
-                                          window.open(downloadLink["downloadLink"], "_blank")
-                                        }
+                                        // if (safariBrowserCheck() !== 'safari') 
+                                        // {
+                                        //   // console.log('not safari')
+                                        //   // works for all browsers except iOS safari
+                                        //   window.open(downloadLink["downloadLink"], "_blank")
+                                        // }
 
-                                        else
+                                        // else
 
-                                        {
-                                        // works for safari
-                                        // console.log('safari')
-                                        window.location.assign(downloadLink["downloadLink"])
+                                        // {
+                                        // // works for safari
+                                        // // console.log('safari')
+                                        // window.location.assign(downloadLink["downloadLink"])
                                         // var out = new Blob([res.data], { type: 'application/pdf' });
                                         // var reader = new FileReader();
                                         // reader.onload = function(e) {
@@ -262,7 +277,7 @@ class App extends Component {
                                         // a.download = 'Ready_to_print_albumz.pdf';
                                         // document.body.appendChild(a);
                                         // a.click();
-                                        }
+                                        // }
                                         
                                      })
                                     
@@ -273,17 +288,17 @@ class App extends Component {
                               
                                               
                         }
-                        function safariBrowserCheck() {
-                        var userAgent = window.navigator.userAgent;
-                        // console.log(userAgent, "user agent")
-                        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
-                          console.log('safari')
-                          return "safari";
-                        }
-                        else {
-                          console.log('not safari')
-                          // Anything else
-                            }       }                            
+                        // function safariBrowserCheck() {
+                        // var userAgent = window.navigator.userAgent;
+                        // // console.log(userAgent, "user agent")
+                        // if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+                        //   console.log('safari')
+                        //   return "safari";
+                        // }
+                        // else {
+                        //   console.log('not safari')
+                        //   // Anything else
+                        //     }       }                            
   
                         // this.get.bind(this)
                         
@@ -351,20 +366,32 @@ class App extends Component {
                 
           }
 
-           
-            
+          colorSelect = (color) =>{
+            if (color === 'white'){this.setState({colorindex: 0})}
+            if (color === 'green'){this.setState({colorindex: 1})}
+            if (color === 'pink'){this.setState({colorindex: 2})}
+            if (color === 'yellow'){this.setState({colorindex: 3})}
+            if (color === 'blue'){this.setState({colorindex: 4})}
+            if (color === 'purple'){this.setState({colorindex: 5})}
+            if (color === 'red'){this.setState({colorindex: 6})}
+            if (color === 'grey'){this.setState({colorindex: 7})}
+          }
 
-           closeCookieBar = () => {
-           const cookies = new Cookies();
-           cookies.set('cookieConsent', 'Yes', { path: '/', maxAge: 259200000 });
-            // console.log(cookies.get('cookieConsent')); 
-            this.setState({cookieOpacity: 0})
-            this.setState({cookiePEnone: 'None'})}
+          orientSelect = (orient) => {
+            console.log(orient)
+            if (orient === 'landscape'){this.setState({orientIndex: 0})}
+            if (orient === 'square'){this.setState({orientIndex: 1})}
+          }
 
-          
-           
-          
-          
+
+
+          closeCookieBar = () => {
+          const cookies = new Cookies();
+          cookies.set('cookieConsent', 'Yes', { path: '/', maxAge: 259200000 });
+          // console.log(cookies.get('cookieConsent')); 
+          this.setState({cookieOpacity: 0})
+          this.setState({cookiePEnone: 'None'})}
+
 
   render(){
     
@@ -381,13 +408,23 @@ class App extends Component {
       
       <div className = "firstpic"></div> 
 
-
-      
-      
       <div className='thumb' style = {{color:this.state.thumbColor}}>
           {this.state.nofiles}
         </div>
-
+      <div className='albumOrient'>
+        <button className={this.state.orientIndex === 0 ? 'landB-active': 'landB'} onClick={() =>this.orientSelect('landscape')} >Landscape</button>
+        <button className={this.state.orientIndex === 1 ? 'sqB-active': 'sqB'} onClick={() =>this.orientSelect('square')} >   Square  </button>
+      </div>
+      <div className='colorSelect'>
+        <button className={this.state.colorindex === 0 ? 'cWhite-active': 'cWhite'} onClick={() =>this.colorSelect('white')} ></button>
+        <button className={this.state.colorindex === 1 ? 'cGreen-active': 'cGreen'} onClick={() =>this.colorSelect('green')} ></button>
+        <button className={this.state.colorindex === 2 ? 'cPink-active': 'cPink'} onClick={() =>this.colorSelect('pink')} ></button>
+        <button className={this.state.colorindex === 3 ? 'cYellow-active': 'cYellow'} onClick={() =>this.colorSelect('yellow')} ></button>
+        <button className={this.state.colorindex === 4 ? 'cBlue-active': 'cBlue'} onClick={() =>this.colorSelect('blue')} ></button>
+        <button className={this.state.colorindex === 5 ? 'cPur-active': 'cPur'} onClick={() =>this.colorSelect('purple')} ></button>
+        <button className={this.state.colorindex === 6 ? 'cRed-active': 'cRed'} onClick={() =>this.colorSelect('red')} ></button>
+        <button className={this.state.colorindex === 7 ? 'cGr-active': 'cGr'} onClick={() =>this.colorSelect('grey')} ></button>
+      </div>
 
       <div className = 'button-fam'>
         <div>
