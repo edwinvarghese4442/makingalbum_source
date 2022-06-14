@@ -231,8 +231,22 @@ class App extends Component {
                                   else
                                   
                                   {
+
+                                    console.log(json_value, 'THE CONTENT')
+                                    // var generated_url = 'https://makingalbum.s3.ap-south-1.amazonaws.com/' + json_value['file_name']
+                                    var generated_url = response.data.file_download[0]
+                                    // console.log(generated_url, 'thisssssss')
+                                    self.setState({pbar: 220, 'bgc': '#178012'}, () => {
+                                            self.setState({'animation': 'none'})
+                                            self.setState({'pgbg': '#178012'})})
+                                          self.setState({statususer:'Download complete!'})
+                                    const pdfWindow = window.open('?','_self');
+                                    pdfWindow.location.href = generated_url;
+                                    
+
                                     // console.log('file is ready', json_value)
-                                    axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => {
+                                    axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => 
+                                      {
      
                                         console.log(res.data)
 
@@ -250,37 +264,7 @@ class App extends Component {
                                           self.setState({'animation': 'none'})
                                           self.setState({'pgbg': '#178012'})})
                                         self.setState({statususer:'Download complete!'})
-                                        
-                                        // if (safariBrowserCheck() !== 'safari') 
-                                        // {
-                                        //   // console.log('not safari')
-                                        //   // works for all browsers except iOS safari
-                                        //   window.open(downloadLink["downloadLink"], "_blank")
-                                        // }
-
-                                        // else
-
-                                        // {
-                                        // // works for safari
-                                        // // console.log('safari')
-                                        // window.location.assign(downloadLink["downloadLink"])
-                                        // var out = new Blob([res.data], { type: 'application/pdf' });
-                                        // var reader = new FileReader();
-                                        // reader.onload = function(e) {
-                                        //     window.location.href = reader.result;
-                                        // }
-                                        // reader.readAsDataURL(out);
-                                        // var fileURL = URL.createObjectURL(out);
-                                        // var a = document.createElement('a');
-                                        // a.href = fileURL;
-                                        // a.target = '_blank';
-                                        // a.download = 'Ready_to_print_albumz.pdf';
-                                        // document.body.appendChild(a);
-                                        // a.click();
-                                        // }
-                                        
-                                     })
-                                    
+                                      })
                                   }
                                   
 
@@ -378,7 +362,7 @@ class App extends Component {
           }
 
           orientSelect = (orient) => {
-            console.log(orient)
+
             if (orient === 'landscape'){this.setState({orientIndex: 0})}
             if (orient === 'square'){this.setState({orientIndex: 1})}
           }
