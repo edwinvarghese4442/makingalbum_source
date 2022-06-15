@@ -233,38 +233,39 @@ class App extends Component {
                                   {
 
                                     console.log(json_value, 'THE CONTENT')
-                                    // var generated_url = 'https://makingalbum.s3.ap-south-1.amazonaws.com/' + json_value['file_name']
-                                    var generated_url = response.data.file_download[0]
+                                    var generated_url = 'https://makingalbum.s3.ap-south-1.amazonaws.com/' + json_value['file_name']
+                                    // var generated_url = response.data.file_download[0]
                                     // console.log(generated_url, 'thisssssss')
                                     self.setState({pbar: 220, 'bgc': '#178012'}, () => {
                                             self.setState({'animation': 'none'})
                                             self.setState({'pgbg': '#178012'})})
                                           self.setState({statususer:'Download complete!'})
-                                    const pdfWindow = window.open('?','_self');
-                                    pdfWindow.location.href = generated_url;
+                                    console.log(generated_url, 'ssss')
+                                    window.open(generated_url,'_self');
+                                    // pdfWindow.location.href = generated_url;
                                     
 
                                     // console.log('file is ready', json_value)
-                                    axios.get(response.data.file_download[0], {responseType:'arraybuffer'}).then(res => 
-                                      {
+                                    // axios.get(generated_url, {responseType:'arraybuffer'}).then(res => 
+                                    //   {
      
-                                        console.log(res.data)
-
-                                        const file = new Blob([res.data], { type: "application/pdf" });
-                                        //Build a URL from the file
-                                        console.log('type ', typeof(res.data))
-                                        const fileURL = URL.createObjectURL(file);
-                                        // console.log(fileURL, 'ooooooobbbbbbbbbbbboooooooo', typeof(fileURL))
-                                        //Open the URL on new Window
-                                        const pdfWindow = window.open();
-                                        pdfWindow.location.href = fileURL;  
+                                    //     console.log(res.data)
+                                    //     // window.open(res.data, '_blank');
+                                    //     // const file = new Blob([res.data], { type: "application/pdf" });
+                                    //     //Build a URL from the file
+                                    //     // console.log('type ', typeof(res.data))
+                                    //     // const fileURL = URL.createObjectURL(file);
+                                    //     // console.log(fileURL, 'ooooooobbbbbbbbbbbboooooooo', typeof(fileURL))
+                                    //     //Open the URL on new Window
+                                    //     // const pdfWindow = window.open();
+                                    //     // pdfWindow.location.href = fileURL;  
                                                                         
-                                        // change the animated loading bar state and change the text as well
-                                        self.setState({pbar: 220, 'bgc': '#178012'}, () => {
-                                          self.setState({'animation': 'none'})
-                                          self.setState({'pgbg': '#178012'})})
-                                        self.setState({statususer:'Download complete!'})
-                                      })
+                                    //     // change the animated loading bar state and change the text as well
+                                    //     self.setState({pbar: 220, 'bgc': '#178012'}, () => {
+                                    //       self.setState({'animation': 'none'})
+                                    //       self.setState({'pgbg': '#178012'})})
+                                    //     self.setState({statususer:'Download complete!'})
+                                    //   })            
                                   }
                                   
 
