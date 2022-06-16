@@ -187,7 +187,6 @@ class App extends Component {
                           };
 
                         var downloadLink = {"downloadLink":response.data.file_download[0]}
-                        console.log(payload, 'kkkkkkkkkkkkk')
                         axios.post('https://main.makingalbum.com', payload)
                         
               
