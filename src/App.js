@@ -352,14 +352,14 @@ class App extends Component {
           }
 
           colorSelect = (color) =>{
-            if (color === 'white'){this.setState({colorindex: 0})}
-            if (color === 'green'){this.setState({colorindex: 1})}
-            if (color === 'pink'){this.setState({colorindex: 2})}
-            if (color === 'yellow'){this.setState({colorindex: 3})}
-            if (color === 'blue'){this.setState({colorindex: 4})}
-            if (color === 'purple'){this.setState({colorindex: 5})}
-            if (color === 'red'){this.setState({colorindex: 6})}
-            if (color === 'grey'){this.setState({colorindex: 7})}
+            if (color === 'white'){this.setState({colorindex: 'white'})}
+            if (color === 'green'){this.setState({colorindex: 'green'})}
+            if (color === 'pink'){this.setState({colorindex: 'pink'})}
+            if (color === 'yellow'){this.setState({colorindex: 'yellow'})}
+            if (color === 'blue'){this.setState({colorindex: 'blue'})}
+            if (color === 'purple'){this.setState({colorindex: 'purple'})}
+            if (color === 'red'){this.setState({colorindex: 'red'})}
+            if (color === 'grey'){this.setState({colorindex: 'grey'})}
           }
 
           orientSelect = (orient) => {
@@ -401,14 +401,14 @@ class App extends Component {
         <button className={this.state.orientIndex === 1 ? 'sqB-active': 'sqB'} onClick={() =>this.orientSelect('square')} >   Square  </button>
       </div>
       <div className='colorSelect'>
-        <button className={this.state.colorindex === 0 ? 'cWhite-active': 'cWhite'} onClick={() =>this.colorSelect('white')} ></button>
-        <button className={this.state.colorindex === 1 ? 'cGreen-active': 'cGreen'} onClick={() =>this.colorSelect('green')} ></button>
-        <button className={this.state.colorindex === 2 ? 'cPink-active': 'cPink'} onClick={() =>this.colorSelect('pink')} ></button>
-        <button className={this.state.colorindex === 3 ? 'cYellow-active': 'cYellow'} onClick={() =>this.colorSelect('yellow')} ></button>
-        <button className={this.state.colorindex === 4 ? 'cBlue-active': 'cBlue'} onClick={() =>this.colorSelect('blue')} ></button>
-        <button className={this.state.colorindex === 5 ? 'cPur-active': 'cPur'} onClick={() =>this.colorSelect('purple')} ></button>
-        <button className={this.state.colorindex === 6 ? 'cRed-active': 'cRed'} onClick={() =>this.colorSelect('red')} ></button>
-        <button className={this.state.colorindex === 7 ? 'cGr-active': 'cGr'} onClick={() =>this.colorSelect('grey')} ></button>
+        <button className={this.state.colorindex === 'white' ? 'cWhite-active': 'cWhite'} onClick={() =>this.colorSelect('white')} ></button>
+        <button className={this.state.colorindex === 'green' ? 'cGreen-active': 'cGreen'} onClick={() =>this.colorSelect('green')} ></button>
+        <button className={this.state.colorindex === 'pink' ? 'cPink-active': 'cPink'} onClick={() =>this.colorSelect('pink')} ></button>
+        <button className={this.state.colorindex === 'yellow' ? 'cYellow-active': 'cYellow'} onClick={() =>this.colorSelect('yellow')} ></button>
+        <button className={this.state.colorindex === 'blue' ? 'cBlue-active': 'cBlue'} onClick={() =>this.colorSelect('blue')} ></button>
+        <button className={this.state.colorindex === 'purple' ? 'cPur-active': 'cPur'} onClick={() =>this.colorSelect('purple')} ></button>
+        <button className={this.state.colorindex === 'red' ? 'cRed-active': 'cRed'} onClick={() =>this.colorSelect('red')} ></button>
+        <button className={this.state.colorindex === 'grey' ? 'cGr-active': 'cGr'} onClick={() =>this.colorSelect('grey')} ></button>
       </div>
 
       <div className = 'button-fam'>
