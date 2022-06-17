@@ -123,41 +123,61 @@ class App extends Component {
 
   downloadFile (data) {
       // console.log(data,"arguments for getting URLs")
-      const payload = {
-        "process_type": "url",
-        "input_extension":data[0],
-        "output_extension": data[1],
-        "size1":this.state.rangeval1,
-        "size2":this.state.rangeval2,
-        "page_input": this.state.pageNumber
-        };
+      
       
       // console.log(this.state.selectedFile, "file")
       // if 
       if (this.state.selectedFile != null) {
-
+                  let stateq = this
+                  function checkQueueAndStart()
+                  {
+                    console.log('queue start')
                   // initiate dummy portion of the loader
-
-                  this.setState({'animation': 'example 20ms infinite'})
-                  this.setState({'pgbg': '#ff2525'})
-                  this.setState({display: 1})
-                  this.setState({pbar: 30})
-                  this.setState({statususer:'starting...'})
+                  axios.get('https://makingalbum.s3.ap-south-1.amazonaws.com/progress.json').then(response => 
+                  {
+                  console.log(response, 'queue response')
+                    if (response.data['status'] === 'wip')   {
+                      stateq.setState({'animation': 'example 20ms infinite'})
+                      stateq.setState({'pgbg': '#ff2525'})
+                      stateq.setState({display: 1})
+                      stateq.setState({pbar: 20})
+                      stateq.setState({statususer:'setting up the desk. Hang on! :)'})
+                  checkQueueAndStart()}
+                  else
+                  {
+                    console.log('inluck.....')
+                    stateq.setState({'animation': 'example 20ms infinite'})
+                    console.log('inluck.....2')
+                    stateq.setState({'pgbg': '#ff2525'})
+                    stateq.setState({display: 1})
+                    stateq.setState({pbar: 30})
+                    stateq.setState({statususer:'starting...'})
 
 
                   // get external url path of the final file
+                  const payload = {
+                    "process_type": "url",
+                    "input_extension":data[0],
+                    "output_extension": data[1],
+                    "size1":stateq.state.rangeval1,
+                    "size2":stateq.state.rangeval2,
+                    "page_input": stateq.state.pageNumber
+                    };
+                    console.log('inluck.....3')
                   axios.post('https://main.makingalbum.com', payload, {timeout: 10000})
                     .then(response => 
                   { 
                     // display the urls along the file path
                     // console.log("display the urls along the file path") 
-                    // console.log(response.data)
+                    console.log('waiting')
   
   
                     //upload blob file to s3
-                    var uself = this
+                    var uself = stateq
+                    console.log('waiting2')
                     const config = {
                       onUploadProgress: function(progressEvent) {
+                        console.log('waiting3')
                         var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
                         // console.log(percentCompleted)
                         
@@ -165,7 +185,7 @@ class App extends Component {
                       }
                     }
                     // console.log("uploading file to s3",  this.state.selectedFile, typeof(this.state.selectedFile)) 
-                    axios.put(response.data.file_upload[0], this.state.selectedFile, config)
+                    axios.put(response.data.file_upload[0], stateq.state.selectedFile, config)
   
                     const blob = new Blob([JSON.stringify({'status':'wip', 'response':'uploading your photos ', 'pbar':80})], { type: 'application/json' });
                     var blob_file = new File([blob], "k.json")
@@ -181,8 +201,8 @@ class App extends Component {
                           "user_file": response.data.file_upload[1],
                           "outfile_name": response.data.file_download[1],
                           "json_file": response.data.json[1],
-                          "color": this.state.colorindex,
-                          "orientation": this.state.orientIndex
+                          "color": stateq.state.colorindex,
+                          "orientation": stateq.state.orientIndex
                           
                           };
 
@@ -191,7 +211,7 @@ class App extends Component {
                         
               
                         // Going to a recursive function
-                        var self = this
+                        var self = stateq
                         var i = 0
 
 
@@ -241,30 +261,7 @@ class App extends Component {
                                           self.setState({statususer:'Download complete!'})
                                     console.log(generated_url, 'ssss')
                                     window.open(generated_url,'_self');
-                                    // pdfWindow.location.href = generated_url;
-                                    
-
-                                    // console.log('file is ready', json_value)
-                                    // axios.get(generated_url, {responseType:'arraybuffer'}).then(res => 
-                                    //   {
-     
-                                    //     console.log(res.data)
-                                    //     // window.open(res.data, '_blank');
-                                    //     // const file = new Blob([res.data], { type: "application/pdf" });
-                                    //     //Build a URL from the file
-                                    //     // console.log('type ', typeof(res.data))
-                                    //     // const fileURL = URL.createObjectURL(file);
-                                    //     // console.log(fileURL, 'ooooooobbbbbbbbbbbboooooooo', typeof(fileURL))
-                                    //     //Open the URL on new Window
-                                    //     // const pdfWindow = window.open();
-                                    //     // pdfWindow.location.href = fileURL;  
-                                                                        
-                                    //     // change the animated loading bar state and change the text as well
-                                    //     self.setState({pbar: 220, 'bgc': '#178012'}, () => {
-                                    //       self.setState({'animation': 'none'})
-                                    //       self.setState({'pgbg': '#178012'})})
-                                    //     self.setState({statususer:'Download complete!'})
-                                    //   })            
+                                   
                                   }
                                   
 
@@ -272,35 +269,22 @@ class App extends Component {
                               
                                               
                         }
-                        // function safariBrowserCheck() {
-                        // var userAgent = window.navigator.userAgent;
-                        // // console.log(userAgent, "user agent")
-                        // if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
-                        //   console.log('safari')
-                        //   return "safari";
-                        // }
-                        // else {
-                        //   console.log('not safari')
-                        //   // Anything else
-                        //     }       }                            
-  
-                        // this.get.bind(this)
-                        
-                        
-  
+                       
                         get();
                         
                       });
                       
                   }).catch(error => {     
+                  console.log(error)
                   this.setState({statususer:'oh dear, I am not able to reach server. please try later'})
                   this.setState({'pgbg': 'red'})
                   this.setState({'animation': 'none'})
                   this.setState({display: 1})
                   this.setState({pbar: 210})
                     });
-      
-  
+
+                  }})}
+                  checkQueueAndStart()
                 } else{
 
 
