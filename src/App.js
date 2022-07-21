@@ -102,7 +102,7 @@ class App extends Component {
       })
 
       this.setState({
-        thumbColor: 'grey'
+        thumbColor: 'rgb(0 0 0)'
       })
     
       // console.log("selected less than 30 files")
