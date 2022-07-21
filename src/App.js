@@ -56,6 +56,9 @@ class App extends Component {
 
     this.state.colorindex = 0;
     this.state.orientIndex = 0;
+
+    this.state.downloadBcss = 'rgb(11, 63, 105)'
+    this.state.downloadBnone = 'auto'
     
   }
 
@@ -72,17 +75,31 @@ class App extends Component {
     // })
     // console.log("uploaded file")
     // console.log(event.target.files.length)
-    if (event.target.files.length > 30) {
+    if (event.target.files.length > 25) {
       // console.log("selected more than 30 files")
       this.setState({
-          nofiles: 'please select upto 25 images'
+          nofiles: 'select only upto 25 images :('
         })
         this.setState({
           thumbColor: 'red'
         })
-      
+
+        this.setState({
+          downloadBcss: 'rgb(179 176 176)'
+        })
+        this.setState({
+          downloadBnone: 'none'
+        })
+        
     }
     else {
+      // console.log(event.target.files.length)
+      this.setState({
+        downloadBcss: 'rgb(11, 63, 105)'
+      })
+      this.setState({
+        downloadBnone: 'auto'
+      })
 
       this.setState({
         thumbColor: 'grey'
@@ -407,7 +424,7 @@ class App extends Component {
         
       
         <div>
-          <button className = 'downloadButton' onClick={() =>this.downloadFile(['.zip','.pdf', this.state.background])}>make album</button>
+          <button className = 'downloadButton' style = {{color: this.state.downloadBcss, pointerEvents:  this.state.downloadBnone}} onClick={() =>this.downloadFile(['.zip','.pdf', this.state.background])}>make album</button>
         </div>
       </div>
       
