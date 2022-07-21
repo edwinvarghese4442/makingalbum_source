@@ -75,7 +75,7 @@ class App extends Component {
     if (event.target.files.length > 30) {
       // console.log("selected more than 30 files")
       this.setState({
-          nofiles: 'please select less than 31 images'
+          nofiles: 'please select upto 25 images'
         })
         this.setState({
           thumbColor: 'red'
@@ -131,11 +131,11 @@ class App extends Component {
                   let stateq = this
                   function checkQueueAndStart()
                   {
-                    console.log('queue start')
+                    // console.log('queue start')
                   // initiate dummy portion of the loader
                   axios.get('https://makingalbum.s3.ap-south-1.amazonaws.com/progress.json').then(response => 
                   {
-                  console.log(response, 'queue response')
+                  // console.log(response.data['status'], 'queue response')
                     if (response.data['status'] === 'wip')   {
                       stateq.setState({'animation': 'example 20ms infinite'})
                       stateq.setState({'pgbg': '#ff2525'})
@@ -145,9 +145,9 @@ class App extends Component {
                   checkQueueAndStart()}
                   else
                   {
-                    console.log('inluck.....')
+                    // console.log('inluck.....')
                     stateq.setState({'animation': 'example 20ms infinite'})
-                    console.log('inluck.....2')
+                    // console.log('inluck.....2')
                     stateq.setState({'pgbg': '#ff2525'})
                     stateq.setState({display: 1})
                     stateq.setState({pbar: 30})
@@ -163,21 +163,21 @@ class App extends Component {
                     "size2":stateq.state.rangeval2,
                     "page_input": stateq.state.pageNumber
                     };
-                    console.log('inluck.....3')
+                    // console.log('inluck.....3')
                   axios.post('https://main.makingalbum.com', payload, {timeout: 10000})
                     .then(response => 
                   { 
                     // display the urls along the file path
                     // console.log("display the urls along the file path") 
-                    console.log('waiting')
+                    // console.log('waiting')
   
   
                     //upload blob file to s3
                     var uself = stateq
-                    console.log('waiting2')
+                    // console.log('waiting2')
                     const config = {
                       onUploadProgress: function(progressEvent) {
-                        console.log('waiting3')
+                        // console.log('waiting3')
                         var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
                         // console.log(percentCompleted)
                         
@@ -251,7 +251,7 @@ class App extends Component {
                                   
                                   {
 
-                                    console.log(json_value, 'THE CONTENT')
+                                    // console.log(json_value, 'THE CONTENT')
                                     var generated_url = 'https://makingalbum.s3.ap-south-1.amazonaws.com/' + json_value['file_name']
                                     // var generated_url = response.data.file_download[0]
                                     // console.log(generated_url, 'thisssssss')
@@ -259,7 +259,7 @@ class App extends Component {
                                             self.setState({'animation': 'none'})
                                             self.setState({'pgbg': '#178012'})})
                                           self.setState({statususer:'Download complete!'})
-                                    console.log(generated_url, 'ssss')
+                                    // console.log(generated_url, 'ssss')
                                     window.open(generated_url,'_self');
                                    
                                   }
